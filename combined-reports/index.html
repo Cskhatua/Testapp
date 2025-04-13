@@ -5,23 +5,44 @@
 </head>
 <body>
     <h1>Combined Reports</h1>
-    <h2>HTML Files</h2>
-    <ul>
+    <h2>Folders with HTML Files</h2>
+    <ul id="folder-list"></ul>
     <script>
-        // Dynamically generate links to HTML files in the same directory
+        // Dynamically generate links to folders starting with "html-reports" that contain .html files
         fetch(".")
             .then(response => response.text())
             .then(data => {
                 const parser = new DOMParser();
                 const doc = parser.parseFromString(data, "text/html");
                 const links = doc.querySelectorAll("a");
+                const folderList = document.getElementById("folder-list");
+
                 links.forEach(link => {
                     const href = link.getAttribute("href");
-                    if (href.endsWith(".html") && href !== "index.html") {
-                        document.write(`<li><a href="${href}">${href}</a></li>`);
+                    if (href.startsWith("html-reports/")) {  // Check if the folder starts with "html-reports"
+                        fetch(href)
+                            .then(folderResponse => folderResponse.text())
+                            .then(folderData => {
+                                const folderDoc = parser.parseFromString(folderData, "text/html");
+                                const folderLinks = folderDoc.querySelectorAll("a");
+
+                                const hasHtmlFile = Array.from(folderLinks).some(innerLink =>
+                                    innerLink.getAttribute("href").endsWith(".html")
+                                );
+
+                                if (hasHtmlFile) {
+                                    const listItem = document.createElement("li");
+                                    const folderLink = document.createElement("a");
+                                    folderLink.href = href;
+                                    folderLink.textContent = href;
+                                    listItem.appendChild(folderLink);
+                                    folderList.appendChild(listItem);
+                                }
+                            });
                     }
                 });
-            });
+            })
+            .catch(error => console.error("Error fetching directory data:", error));
     </script>
     </ul>
 </body>
