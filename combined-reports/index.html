@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Combined Reports</title>
+</head>
+<body>
+    <h1>Combined Reports</h1>
+    <h2>HTML Files</h2>
+    <ul>
+    <script>
+        // Dynamically generate links to HTML files in the same directory
+        fetch(".")
+            .then(response => response.text())
+            .then(data => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(data, "text/html");
+                const links = doc.querySelectorAll("a");
+                links.forEach(link => {
+                    const href = link.getAttribute("href");
+                    if (href.endsWith(".html") && href !== "index.html") {
+                        document.write(`<li><a href="${href}">${href}</a></li>`);
+                    }
+                });
+            });
+    </script>
+    </ul>
+</body>
+</html>
