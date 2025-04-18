@@ -38,19 +38,31 @@ const folders = [
   'combined-reports/html-report-2025-04-16T13-37-53',
 ];
 
-// Step 1: Sort folders by timestamp
-folders.sort();
+try {
+  // Step 1: Read the `index.html` file
+  if (!fs.existsSync(indexPath)) {
+    throw new Error(`File not found: ${indexPath}`);
+  }
+  let indexContent = fs.readFileSync(indexPath, 'utf8');
 
-// Step 2: Generate new `<a>` tags
-const links = folders.map(folder => `<a href="${folder}/">${folder}/</a>`).join('\n');
+  // Step 2: Remove existing `<a>` tags for HTML folders
+  indexContent = indexContent.replace(
+    /<a href="combined-reports\/html-report-.*?\/">.*?<\/a>\n?/g,
+    ''
+  );
 
-// Step 3: Read and update the `index.html`
-let indexContent = fs.readFileSync(indexPath, 'utf8');
-indexContent = indexContent.replace(
-  /<a href=".*?\/">.*?\/<\/a>/g, // Regex to match existing `<a>` tags
-  links
-);
+  // Step 3: Generate new `<a>` tags for the provided folders
+  const newLinks = folders.map(folder => `<a href="${folder}/">${folder}/</a>`).join('\n');
 
-// Step 4: Write the updated content back to `index.html`
-fs.writeFileSync(indexPath, indexContent, 'utf8');
-console.log('Index.html updated successfully!');
+  // Step 4: Insert the new links into the file
+  indexContent = indexContent.replace(
+    /<\/main>/,
+    `${newLinks}\n</main>`
+  );
+
+  // Step 5: Write the updated content back to `index.html`
+  fs.writeFileSync(indexPath, indexContent, 'utf8');
+  console.log('Index.html updated successfully!');
+} catch (err) {
+  console.error(`An error occurred: ${err.message}`);
+}
