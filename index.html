@@ -2,54 +2,270 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dynamic Reports</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard - Reports Tab</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
+    /* Basic Reset and Setup */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-    h3 {
-      color: #007BFF;
+    html, body {
+      height: 100%;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    .header {
+      height: 60px;
+      background: #007BFF; /* blue */
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+    .body-content {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+    }
+    .sidebar {
+      width: 220px;
+      background: #333;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      padding-top: 20px;
+      flex-shrink: 0;
+    }
+    .sidebar button {
+      padding: 12px 20px;
+      background: none;
+      border: none;
+      color: white;
+      text-align: left;
+      font-size: 16px;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.3s;
+    }
+    .sidebar button:hover, .sidebar button.active {
+      background: #575757;
+    }
+    .main {
+      flex: 1;
+      padding: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .card {
+      background: white;
+      padding: 20px;
+      flex: 1;
+      overflow-y: auto;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    .tab-content {
+      display: none;
+      height: 100%;
+      animation: fadeIn 0.5s;
+    }
+    .tab-content.active {
+      display: flex;
+      flex-direction: column;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+    /* Buttons Top Area */
+    .toggle-buttons {
+      margin-bottom: 20px;
+      display: flex;
+      gap: 10px;
+    }
+    .toggle-buttons button {
+      padding: 10px 20px;
+      border: none;
+      background: #eee;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 16px;
+      transition: background 0.3s;
+    }
+    .toggle-buttons button:hover {
+      background: #007BFF;
+      color: white;
+    }
+    /* iOS + Android Sections Side-by-Side */
+    .report-sections {
+      flex: 1;
+      display: flex;
+      gap: 20px;
+      overflow-y: auto;
     }
     .report-section {
-      margin-bottom: 30px;
+      background: #fafafa;
+      flex: 1;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow-y: auto;
     }
-    .report-section ul {
-      list-style-type: none;
-      padding: 0;
-    }
-    .report-section ul li {
+    .report-section a {
+      display: block;
       margin-bottom: 8px;
-    }
-    .report-section ul li a {
-      text-decoration: none;
       color: #007BFF;
+      text-decoration: none;
+      font-size: 14px;
+      word-break: break-word;
     }
-    .report-section ul li a:hover {
+    .report-section a:hover {
       text-decoration: underline;
+    }
+    main a {
+      display: block;
+      margin-bottom: 6px;
+      color: #007BFF;
+      text-decoration: none;
+      font-size: 15px;
+    }
+    main a:hover {
+      text-decoration: underline;
+    }
+    h2, h3 {
+      margin-bottom: 10px;
+    }
+    hr {
+      margin: 15px 0;
+    }
+    /* Back to Top button */
+    #backToTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #007BFF;
+      color: white;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 18px;
+      display: none;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      transition: opacity 0.3s;
+    }
+    #backToTop:hover {
+      background: #0062cc;
     }
   </style>
 </head>
 <body>
+<div class="container">
+  <div class="header">
+    Proteus Automation Reports
+  </div>
+  <div class="body-content">
+    <div class="sidebar">
+      <button id="homeBtn" onclick="showTab('home', this)" class="active">Home</button>
+      <button id="reportsBtn" onclick="showTab('reports', this)">Reports</button>
+    </div>
+    <div class="main">
+      <div id="home" class="tab-content active">
+        <div class="card">
+          <h2>Welcome to the Dashboard</h2>
+          <p>Select "Reports" from the left menu to view HTML reports.</p>
+          <!-- Total Reports Component -->
+          <div id="totalReports">
+            <h3>Total Reports: <span id="reportCount">0</span></h3>
+          </div>
+        </div>
+      </div>
 
-<h1>Dynamic Reports</h1>
+      <div id="reports" class="tab-content">
+        <div class="card" id="reportsCard">
 
-<div class="report-section">
-  <h3>iOS Reports</h3>
-  <ul>
-    <li><a href="https://raw.githack.com/Cskhatua/Testapp/refs/heads/gh-pages/iOS/IOS_IPhone12_EditDiary_Report.html" target="_blank">IOS_IPhone12_EditDiary_Report.html</a></li>
-    <li><a href="https://raw.githack.com/Cskhatua/Testapp/refs/heads/gh-pages/iOS/IOS_IPhone12_OfflineSync_Report.html" target="_blank">IOS_IPhone12_OfflineSync_Report.html</a></li>
-  </ul>
+          <div class="report-sections">
+            <div id="iosReports" class="report-section">
+              <h3>iOS Reports</h3>
+              <ul>
+                <li><a href="https://raw.githack.com/Cskhatua/Testapp/refs/heads/gh-pages/iOS/IOS_IPhone12_EditDiary_Report.html" target="_blank">IOS_IPhone12_EditDiary_Report.html</a></li>
+                <li><a href="https://raw.githack.com/Cskhatua/Testapp/refs/heads/gh-pages/iOS/IOS_IPhone12_OfflineSync_Report.html" target="_blank">IOS_IPhone12_OfflineSync_Report.html</a></li>
+              </ul>
+            </div>
+
+            <div id="androidReports" class="report-section">
+              <h3>Android Reports</h3>
+              <ul>
+                <li><a href="https://raw.githack.com/Cskhatua/Testapp/refs/heads/gh-pages/Android/Android_Pixel8_EditDiary_Report.html" target="_blank">Android_Pixel8_EditDiary_Report.html</a></li>
+                <li><a href="https://raw.githack.com/Cskhatua/Testapp/refs/heads/gh-pages/Android/Android_Pixel8_OfflineSync_Report.html" target="_blank">Android_Pixel8_OfflineSync_Report.html</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </div>
 
-<div class="report-section">
-  <h3>Android Reports</h3>
-  <ul>
-    <li><a href="https://raw.githack.com/Cskhatua/Testapp/refs/heads/gh-pages/Android/Android_Pixel8_EditDiary_Report.html" target="_blank">Android_Pixel8_EditDiary_Report.html</a></li>
-    <li><a href="https://raw.githack.com/Cskhatua/Testapp/refs/heads/gh-pages/Android/Android_Pixel8_OfflineSync_Report.html" target="_blank">Android_Pixel8_OfflineSync_Report.html</a></li>
-  </ul>
-</div>
+<!-- Back to Top Button -->
+<button id="backToTop" onclick="scrollToTop()">↑</button>
 
+<script>
+    function showTab(tabId, element) {
+      document.querySelectorAll('.tab-content').forEach(function(tab) {
+        tab.classList.remove('active');
+      });
+      document.querySelectorAll('.sidebar button').forEach(function(btn) {
+        btn.classList.remove('active');
+      });
+      document.getElementById(tabId).classList.add('active');
+      element.classList.add('active');
+      document.getElementById('backToTop').style.display = (tabId === 'reports') ? 'block' : 'none';
+
+      if (tabId === 'home') {
+        updateTotalReports(); // Update report count when switching to Home
+      }
+    }
+
+    function scrollToTop() {
+      const card = document.getElementById('reportsCard');
+      card.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function updateTotalReports() {
+      const iosReports = document.querySelectorAll('#iosReports a').length;
+      const androidReports = document.querySelectorAll('#androidReports a').length;
+      const totalReports = iosReports + androidReports;
+      document.getElementById('reportCount').textContent = totalReports;
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      updateTotalReports(); // Initial report count update on page load
+      const card = document.getElementById('reportsCard');
+      card.addEventListener('scroll', function() {
+        const btn = document.getElementById('backToTop');
+        if (card.scrollTop > 200) {
+          btn.style.opacity = 1;
+        } else {
+          btn.style.opacity = 0;
+        }
+      });
+    });
+  </script>
 </body>
 </html>
