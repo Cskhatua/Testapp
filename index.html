@@ -2,24 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Dashboard - Reports Tab</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Reports</title>
   <style>
-    /* Existing styles */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    html, body {
-      height: 100%;
-      overflow: hidden;
+    body {
       font-family: Arial, sans-serif;
-      background: #f4f4f4;
+      margin: 20px;
     }
-    /* Additional styles for dynamic report links */
     h3 {
       color: #007BFF;
+    }
+    .report-section {
+      margin-bottom: 30px;
     }
     .report-section ul {
       list-style-type: none;
@@ -38,108 +32,24 @@
   </style>
 </head>
 <body>
-<div class="container">
-  <div class="header">
-    Proteus Automation Reports
-  </div>
-  <div class="body-content">
-    <div class="sidebar">
-      <button id="homeBtn" onclick="showTab('home', this)" class="active">Home</button>
-      <button id="reportsBtn" onclick="showTab('reports', this)">Reports</button>
-    </div>
-    <div class="main">
-      <div id="home" class="tab-content active">
-        <div class="card">
-          <h2>Welcome to the Dashboard</h2>
-          <p>Select "Reports" from the left menu to view HTML reports.</p>
-          <div class="total-reports-box" id="totalReports">
-            <h3>Total Reports</h3>
-            <div class="count" id="reportCount">0</div>
-          </div>
-        </div>
-      </div>
 
-      <div id="reports" class="tab-content">
-        <div class="card" id="reportsCard">
-          <div class="report-sections">
-            <div id="iosReports" class="report-section">
-              <h3>iOS Reports</h3>
-              <ul id="iosLinks">
-                <!-- iOS links will be dynamically populated here -->
-              </ul>
-            </div>
+<h1>Dynamic Reports</h1>
 
-            <div id="androidReports" class="report-section">
-              <h3>Android Reports</h3>
-              <ul id="androidLinks">
-                <!-- Android links will be dynamically populated here -->
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="report-section">
+  <h3>iOS Reports</h3>
+  <ul>
+    <li><a href="https://raw.githack.com/Cskhatua/Testapp/refs/heads/gh-pages/iOS/IOS_IPhone12_EditDiary_Report.html" target="_blank">IOS_IPhone12_EditDiary_Report.html</a></li>
+    <li><a href="https://raw.githack.com/Cskhatua/Testapp/refs/heads/gh-pages/iOS/IOS_IPhone12_OfflineSync_Report.html" target="_blank">IOS_IPhone12_OfflineSync_Report.html</a></li>
+  </ul>
 </div>
 
-<script>
-    function showTab(tabId, element) {
-      document.querySelectorAll('.tab-content').forEach(function(tab) {
-        tab.classList.remove('active');
-      });
-      document.querySelectorAll('.sidebar button').forEach(function(btn) {
-        btn.classList.remove('active');
-      });
-      document.getElementById(tabId).classList.add('active');
-      element.classList.add('active');
-      document.getElementById('backToTop').style.display = (tabId === 'reports') ? 'block' : 'none';
+<div class="report-section">
+  <h3>Android Reports</h3>
+  <ul>
+    <li><a href="https://raw.githack.com/Cskhatua/Testapp/refs/heads/gh-pages/Android/Android_Pixel8_EditDiary_Report.html" target="_blank">Android_Pixel8_EditDiary_Report.html</a></li>
+    <li><a href="https://raw.githack.com/Cskhatua/Testapp/refs/heads/gh-pages/Android/Android_Pixel8_OfflineSync_Report.html" target="_blank">Android_Pixel8_OfflineSync_Report.html</a></li>
+  </ul>
+</div>
 
-      if (tabId === 'home') {
-        updateTotalReports();
-      }
-    }
-
-    function updateTotalReports() {
-      const iosReports = document.querySelectorAll('#iosReports a').length;
-      const androidReports = document.querySelectorAll('#androidReports a').length;
-      const totalReports = iosReports + androidReports;
-      document.getElementById('reportCount').textContent = totalReports;
-    }
-
-    // Fetch file list from a directory in the repository
-    async function fetchFiles(folder, targetListId) {
-      const repoOwner = "Cskhatua";
-      const repoName = "Testapp";
-      const branch = "gh-pages";
-      const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${folder}?ref=${branch}`;
-      try {
-        const response = await fetch(apiUrl);
-        if (!response.ok) {
-          throw new Error(`Error fetching ${folder} files`);
-        }
-        const files = await response.json();
-        const listElement = document.getElementById(targetListId);
-
-        files.forEach(file => {
-          if (file.type === "dir" || file.type === "file") {
-            const listItem = document.createElement("li");
-            const link = document.createElement("a");
-            link.href = `https://github.com/${repoOwner}/${repoName}/tree/${branch}/${folder}/${file.name}`;
-            link.textContent = file.name;
-            listItem.appendChild(link);
-            listElement.appendChild(listItem);
-          }
-        });
-      } catch (error) {
-        console.error(error);
-      }
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-      fetchFiles("iOS", "iosLinks");
-      fetchFiles("Android", "androidLinks");
-      updateTotalReports();
-    });
-  </script>
 </body>
 </html>
