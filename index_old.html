@@ -1,0 +1,1817 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Proteus Automation Report</title>
+  <link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@b00a2d0486596e73dd7326beacf352c639623a0e/commons/img/logo.png">
+  <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@b00a2d0486596e73dd7326beacf352c639623a0e/commons/img/logo.png">
+  <link href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@d6562a79075e061305ccfdb82f01e5e195e2d307/spark/css/spark-style.css" rel="stylesheet" />
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@7cc78ce/spark/js/jsontree.js"></script>
+  <style type="text/css"></style></head><body class="spa bdd-report dark">
+<div class="app">
+  <div class="layout">
+    <div class="header navbar">
+      <div class="vheader">
+        <div class="nav-logo">
+          <a href="#">
+            <div class="logo" style="background-image: url('https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@b00a2d0486596e73dd7326beacf352c639623a0e/commons/img/logo.png')"></div>
+          </a>
+        </div>
+        <ul class="nav-left">
+          <li class="search-box">
+            <a class="search-toggle" href="#">
+              <i class="search-icon fa fa-search"></i>
+              <i class="search-icon-close fa fa-close"></i>
+            </a>
+          </li>
+          <li class="search-input"><input id="search-tests" class="form-control" type="text" placeholder="Search..."></li>
+        </ul>
+        <ul class="nav-right">
+          <li class="m-r-10">
+            <a href="#"><span class="badge badge-primary">Proteus Mobile App Automation</span></a>
+          </li>
+          <li class="m-r-10">
+            <a href="#"><span class="badge badge-primary">Apr 14, 2025 03:38:42 pm</span></a>
+          </li>
+        </ul>
+      </div>
+    </div><div class="side-nav">
+    <div class="side-nav-inner">
+      <ul class="side-nav-menu">
+        <li class="nav-item dropdown" onclick="toggleView('dashboard-view')">
+          <a id="nav-dashboard" class="dropdown-toggle" href="#">
+            <span class="ico"><i class="fa fa-bar-chart"></i></span>
+          </a>
+        </li>
+        <li class="nav-item dropdown" onclick="toggleView('test-view')">
+          <a id="nav-test" class="dropdown-toggle" href="#">
+            <span class="ico"><i class="fa fa-list"></i></span>
+          </a>
+        </li>
+        <li class="nav-item dropdown" onclick="toggleView('category-view')">
+          <a id="nav-category" class="dropdown-toggle" href="#">
+            <span class="ico"><i class="fa fa-tag"></i></span>
+          </a>
+        </li>
+        <li class="nav-item dropdown" onclick="toggleView('exception-view')">
+          <a id="nav-exception" class="dropdown-toggle" href="#">
+            <span class="ico"><i class="fa fa-bug"></i></span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>      <div class="vcontainer">
+    <div class="main-content">
+      <div class="container-fluid p-4 view dashboard-view">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="card"><div class="card-body">
+              <p class="m-b-0">Started</p>
+              <h3>Apr 14, 2025 03:38:42 pm</h3>
+            </div></div>
+          </div>
+          <div class="col-md-3">
+            <div class="card"><div class="card-body">
+              <p class="m-b-0">Ended</p>
+              <h3>Apr 14, 2025 03:50:51 pm</h3>
+            </div></div>
+          </div>
+          <div class="col-md-3">
+            <div class="card"><div class="card-body">
+              <p class="m-b-0 text-pass">Features Passed</p>
+              <h3>0</h3>
+            </div></div>
+          </div>
+          <div class="col-md-3">
+            <div class="card"><div class="card-body">
+              <p class="m-b-0 text-fail">Features Failed</p>
+              <h3>1</h3>
+            </div></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-header">
+                <h6 class="card-title">Features</h6>
+              </div>
+              <div class="card-body">
+                <div class="">
+                  <canvas id='parent-analysis' width='115' height='90'></canvas>
+                </div>
+              </div>
+              <div class="card-footer">
+                <div><small data-tooltip='0%'>
+                  <b>0</b> features passed
+                </small>
+                </div>
+                <div>
+                  <small data-tooltip='100%'><b>1</b> features failed,
+                    <b>0</b> skipped, <b data-tooltip='0%'>0</b> others
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-header">
+                <h6 class="card-title">Scenarios</h6>
+              </div>
+              <div class="card-body">
+                <div class="">
+                  <canvas id='child-analysis' width='115' height='90'></canvas>
+                </div>
+              </div>
+              <div class="card-footer">
+                <div><small data-tooltip='94%'><b>18</b> scenarios passed</small></div>
+                <div>
+                  <small data-tooltip='5%'><b>1</b> scenarios failed,
+                    <b>0</b> skipped, <b data-tooltip='%'>0</b> others
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-header">
+                <h6 class="card-title">Steps</h6>
+              </div>
+              <div class="card-body">
+                <div class="">
+                  <canvas id='grandchild-analysis' width='115' height='90'></canvas>
+                </div>
+              </div>
+              <div class="card-footer">
+                <div><small data-tooltip='91%'><b>152</b> steps passed</small></div>
+                <div>
+                  <small data-tooltip='0%'><b>1</b> steps failed,
+                    <b>14</b> skipped, <b data-tooltip='%'>0</b> others
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row"><div class="col-md-12">
+          <div class="card"><div class="card-header"><p>Timeline</p></div>
+            <div class="card-body pt-0"><div>
+              <canvas id="timeline" height="120"></canvas>
+            </div></div>
+          </div>
+        </div></div>
+        <script>
+var timeline = {
+"App Help Page Functionality":728.428
+};
+</script>
+        <div class="row">
+          <div class="col-lg-6 col-md-12 category-container">
+            <div class="card">
+              <div class="card-header"><p>Tags</p></div>
+              <div class="card-body pb-0 pt-0"><table class="table table-sm table-bordered">
+                <thead><tr class="bg-gray"><th>Name</th><th>Passed</th><th>Failed</th><th>Skipped</th><th>Others</th><th>Passed %</th></tr></thead><tbody>
+              <tr>
+                <td>@Smoke</td>
+                <td>8</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>100%</td>
+              </tr>
+              <tr>
+                <td>@Regression</td>
+                <td>14</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>100%</td>
+              </tr>
+              </tbody>
+              </table></div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-12 sysenv-container">
+            <div class="card">
+              <div class="card-header"><p>System/Environment</p></div>
+              <div class="card-body pb-0 pt-0"><table class="table table-sm table-bordered">
+                <thead><tr class="bg-gray"><th>Name</th><th>Value</th></tr></thead>
+                <tbody>
+                <tr>
+                  <td>Build</td>
+                  <td>0.7.101 (1619)</td>
+                </tr>
+                <tr>
+                  <td>AppName</td>
+                  <td>Proteus Patient App</td>
+                </tr>
+                <tr>
+                  <td>Run_By</td>
+                  <td>Nandan</td>
+                </tr>
+                <tr>
+                  <td>Platform_Version</td>
+                  <td>14</td>
+                </tr>
+                <tr>
+                  <td>Device</td>
+                  <td>Pixel 9 Pro</td>
+                </tr>
+                <tr>
+                  <td>Platform</td>
+                  <td>Android</td>
+                </tr>
+                <tr>
+                  <td>OS</td>
+                  <td>Mac</td>
+                </tr>
+                </tbody>
+              </table></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script>
+var statusGroup = {
+parentCount: 5,
+passParent: 0,
+failParent: 1,
+warningParent: 0,
+skipParent: 0,
+childCount: 5,
+passChild: 18,
+failChild: 1,
+warningChild: 0,
+skipChild: 0,
+infoChild: 0,
+grandChildCount: 5,
+passGrandChild: 152,
+failGrandChild: 1,
+warningGrandChild: 0,
+skipGrandChild: 14,
+infoGrandChild: 0,
+eventsCount: 5,
+};
+</script><div class="test-wrapper row view test-view">
+      <div class="test-list">
+        <div class="test-list-tools">
+          <ul class="tools pull-left">
+            <li><a href="#"><span class="font-size-14">Tests</span></a></li>
+          </ul>
+          <ul class="tools text-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-exclamation-circle"></i></a>
+              <ul id="status-toggle" class="dropdown-menu dropdown-md p-v-0">
+                <a class="dropdown-item" status="fail" href="#"><span>Fail</span><span class="status danger"></span></a>
+                <div class="dropdown-divider"></div>
+                <a status="clear" class="dropdown-item" href="#"><span>Clear</span><span class="pull-right"><i class="fa fa-close"></i></span></a>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-tag"></i></a>
+              <ul id="tag-toggle" class="dropdown-menu dropdown-md p-v-0">
+                <a class="dropdown-item" href="#">@Smoke</a><a class="dropdown-item" href="#">@Regression</a>
+              </ul>
+            </li>
+          </ul>
+        </div>    <div class="test-list-wrapper scrollable">
+        <ul class="test-list-item">
+          <li class="test-item"  status="fail" test-id="1"
+              author=""
+              tag=""
+              device="">
+            <div class="test-detail">
+              <p class="name">App Help Page Functionality</p>
+              <p class="text-sm">
+                <span>15:38:42</span> / <span>00:12:08:428</span>
+                <span class="badge fail-bg log float-right">Fail</span>
+              </p>
+            </div>
+            <div class="test-contents d-none">
+              <div class="detail-head">
+                <div class="p-v-10">
+                  <div class="info">
+                    <h5 class="test-status text-fail">App Help Page Functionality</h5>
+                    <span class='badge badge-success'>04.14.2025 15:38:42</span>
+                    <span class='badge badge-danger'>04.14.2025 15:50:51</span>
+                    <span class='badge badge-default'>00:12:08:428</span>
+                    &middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
+                    <span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+                    <span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+                  </div>
+                  <div class="m-t-10 m-l-5"> As a user
+                    I am able to launch the app
+                    and I should be able to see all the help cards in help tab</div>
+                </div>
+              </div>
+              <div class="accordion mt-4">
+                <div class="card">
+                  <div class="card-header" role="tab">
+                    <div class="card-title">
+                      <div class="node" id="2"><span class="badge log pass-bg mr-2">Pass</span>Test Case 66142: Verify help page is displayed to user with all help cards in English</div>
+                    </div>
+                  </div>
+                  <div class="collapse">
+                    <div class="card-body">
+                      <div class="step pass-bg" title="com.proteus.stepdef.WelcomeScreenStepDef.app_is_installed_on_device()">
+                        <span>Given App is installed on device</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.WelcomeScreenStepDef.user_launches_the_app()">
+                        <span>When User launches the app</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.PrescriptionInfoStepDef.user_navigated_till_enter_passcode_page()">
+                        <span>And User navigated till enter passcode page</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.EnterPasscodeStepDef.enter_the_valid_passcode_from(java.lang.String)">
+                        <span>And Enter the valid passcode from "email"</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.PrescriptionInfoStepDef.click_on_lets_begin_button()">
+                        <span>And Click on Lets begin button</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.click_on_help_tab()">
+                        <span>And Click on Help tab</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.EnterPasscodeStepDef.wait_for_the_page_to_load_completely()">
+                        <span>And Wait for the page to load completely</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.help_page_should_be_displayed_in_english()">
+                        <span>Then Help page should be displayed in English</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.help_categories_should_be_displayed_in_english()">
+                        <span>And Help categories should be displayed in English</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.contact_customer_support_button_in_help_tab_should_be_displayed_in_english()">
+                        <span>And Contact customer support button in help tab should be displayed in English</span>
+                        <div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header" role="tab">
+                    <div class="card-title">
+                      <div class="node" id="15"><span class="badge log pass-bg mr-2">Pass</span>Test Case 66147: Verify by killing app in help page</div>
+                    </div>
+                  </div>
+                  <div class="collapse">
+                    <div class="card-body">
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.user_is_on_the_help_page()">
+                        <span>When User is on the help page</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.WelcomeScreenStepDef.User_kills_the_app()">
+                        <span>And User kills the app</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.WelcomeScreenStepDef.user_relaunches_the_app()">
+                        <span>And User relaunches the app</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HomePageStepDef.app_home_page_should_be_displayed()">
+                        <span>Then App home page should be displayed</span>
+                        <div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header" role="tab">
+                    <div class="card-title">
+                      <div class="node" id="22"><span class="badge log pass-bg mr-2">Pass</span>Test Case 66143,66144: Verify help cards displayed in all help categories in English</div>
+                    </div>
+                  </div>
+                  <div class="collapse">
+                    <div class="card-body">
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.user_is_on_the_help_page()">
+                        <span>When User is on the help page</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.click_on_help_tab()">
+                        <span>And Click on Help tab</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.EnterPasscodeStepDef.wait_for_the_page_to_load_completely()">
+                        <span>And Wait for the page to load completely</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.help_cards_and_card_icon_under_sensor_and_patch_category_should_be_displayed_in_english()">
+                        <span>Then Help cards and card icon under Sensor and Patch category should be displayed in English</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.help_cards_and_card_icon_under_app_details_category_should_be_displayed_in_english()">
+                        <span>And Help cards and card icon under App details category should be displayed in English</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.help_cards_and_card_icon_under_program_details_category_should_be_displayed_in_english()">
+                        <span>And Help cards and card icon under Program details category should be displayed in English</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.help_cards_and_card_icon_under_others_category_should_be_displayed_in_english()">
+                        <span>And Help cards and card icon under Others category should be displayed in English</span>
+                        <div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header" role="tab">
+                    <div class="card-title">
+                      <div class="node" id="32"><span class="badge log pass-bg mr-2">Pass</span>Test Case 66145,66156: : Verify contact customer support popup in English</div>
+                    </div>
+                  </div>
+                  <div class="collapse">
+                    <div class="card-body">
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.user_is_on_the_help_page()">
+                        <span>When User is on the help page</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.NoPrescriptionMatchStepDef.click_on_contact_customer_support_button()">
+                        <span>And Click on Contact customer support button</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.TermsAndConditionsStepDef.customer_support_header_should_be_in_english()">
+                        <span>And Customer support header should be in English</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.TermsAndConditionsStepDef.customer_care_number_should_be_displayed()">
+                        <span>And Customer care number should be displayed</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.TermsAndConditionsStepDef.customer_care_content_should_be_in_english()">
+                        <span>And Customer care content should be in English</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.reference_code_in_help_page_should_be_in_english()">
+                        <span>And Reference code in help page should be in English</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.TermsAndConditionsStepDef.ok_button_should_be_in_english()">
+                        <span>And Ok button should be in English</span>
+                        <div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header" role="tab">
+                    <div class="card-title">
+                      <div class="node" id="42"><span class="badge log pass-bg mr-2">Pass</span>Test Case 66149,66157: Verify ok button on customer care support popup</div>
+                    </div>
+                  </div>
+                  <div class="collapse">
+                    <div class="card-body">
+                      <div class="step pass-bg" title="com.proteus.stepdef.ScanningServerErrorStepDef.user_is_on_the_server_error_page()">
+                        <span>When User is on the server error page</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.TermsAndConditionsStepDef.click_on_Ok_button()">
+                        <span>And Click on Ok button</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.contact_customer_support_button_in_help_tab_should_be_displayed_in_english()">
+                        <span>Then Contact customer support button in help tab should be displayed in English</span>
+                        <div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header" role="tab">
+                    <div class="card-title">
+                      <div class="node" id="48"><span class="badge log pass-bg mr-2">Pass</span>Test Case 66146: Verify by switching app to background in help page</div>
+                    </div>
+                  </div>
+                  <div class="collapse">
+                    <div class="card-body">
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.user_is_on_the_help_page()">
+                        <span>When User is on the help page</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.WelcomeScreenStepDef.switch_app_to_background_state()">
+                        <span>And Switch app to background state</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.contact_customer_support_button_in_help_tab_should_be_displayed_in_english()">
+                        <span>Then Contact customer support button in help tab should be displayed in English</span>
+                        <div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header" role="tab">
+                    <div class="card-title">
+                      <div class="node" id="54"><span class="badge log pass-bg mr-2">Pass</span>Test Case 66152:  Verify display of help card content in help page</div>
+                    </div>
+                  </div>
+                  <div class="collapse">
+                    <div class="card-body">
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.user_is_on_the_help_page()">
+                        <span>When User is on the help page</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.WelcomeScreenStepDef.User_kills_the_app()">
+                        <span>And User kills the app</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.WelcomeScreenStepDef.user_relaunches_the_app()">
+                        <span>And User relaunches the app</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.click_on_help_tab()">
+                        <span>And Click on Help tab</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.EnterPasscodeStepDef.wait_for_the_page_to_load_completely()">
+                        <span>And Wait for the page to load completely</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.click_on_first_help_card()">
+                        <span>And Click on first help card</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.help_card_title_should_be_displayed_in_english()">
+                        <span>Then Help card title should be displayed in English</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.help_card_content_should_be_displayed_in_english()">
+                        <span>And Help card content should be displayed in English</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.help_card_image_should_be_displayed()">
+                        <span>And Help card image should be displayed</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.close_button_should_be_displayed()">
+                        <span>And Close button should be displayed</span>
+                        <div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header" role="tab">
+                    <div class="card-title">
+                      <div class="node" id="67"><span class="badge log pass-bg mr-2">Pass</span>Test Case 66153: Verify by closing help card</div>
+                    </div>
+                  </div>
+                  <div class="collapse">
+                    <div class="card-body">
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.user_is_on_the_help_card_webview()">
+                        <span>When User is on the help card webview</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.click_on_close_button_on_card()">
+                        <span>And Click on close button on card</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.help_page_should_be_displayed_in_english()">
+                        <span>Then Help page should be displayed in English</span>
+                        <div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header" role="tab">
+                    <div class="card-title">
+                      <div class="node" id="73"><span class="badge log pass-bg mr-2">Pass</span>Test Case 66154: Verify switching app to background when help card is open</div>
+                    </div>
+                  </div>
+                  <div class="collapse">
+                    <div class="card-body">
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.user_is_on_the_help_page()">
+                        <span>When User is on the help page</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.click_on_first_help_card()">
+                        <span>And Click on first help card</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.WelcomeScreenStepDef.switch_app_to_background_state()">
+                        <span>And Switch app to background state</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.help_card_title_should_be_displayed_in_english()">
+                        <span>Then Help card title should be displayed in English</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.help_card_content_should_be_displayed_in_english()">
+                        <span>And Help card content should be displayed in English</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.help_card_image_should_be_displayed()">
+                        <span>And Help card image should be displayed</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.close_button_should_be_displayed()">
+                        <span>And Close button should be displayed</span>
+                        <div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header" role="tab">
+                    <div class="card-title">
+                      <div class="node" id="83"><span class="badge log pass-bg mr-2">Pass</span>Test Case 66155: Verify killing app when help card is open</div>
+                    </div>
+                  </div>
+                  <div class="collapse">
+                    <div class="card-body">
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.user_is_on_the_help_card_webview()">
+                        <span>When User is on the help card webview</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.WelcomeScreenStepDef.User_kills_the_app()">
+                        <span>And User kills the app</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.WelcomeScreenStepDef.user_relaunches_the_app()">
+                        <span>And User relaunches the app</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HomePageStepDef.app_home_page_should_be_displayed()">
+                        <span>Then App home page should be displayed</span>
+                        <div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header" role="tab">
+                    <div class="card-title">
+                      <div class="node" id="90"><span class="badge log pass-bg mr-2">Pass</span>Test Case 66148: Verify help page is displayed to user with all help cards in English in offline mode</div>
+                    </div>
+                  </div>
+                  <div class="collapse">
+                    <div class="card-body">
+                      <div class="step pass-bg" title="com.proteus.stepdef.WelcomeScreenStepDef.app_is_installed_on_device()">
+                        <span>Given App is installed on device</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.WelcomeScreenStepDef.user_launches_the_app()">
+                        <span>When User launches the app</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.PrescriptionInfoStepDef.user_navigated_till_enter_passcode_page()">
+                        <span>And User navigated till enter passcode page</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.EnterPasscodeStepDef.wait_for_the_page_to_load_completely()">
+                        <span>And Wait for the page to load completely</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.EnterPasscodeStepDef.enter_the_valid_passcode_from(java.lang.String)">
+                        <span>And Enter the valid passcode from "email"</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.EnterPasscodeStepDef.wait_for_the_page_to_load_completely()">
+                        <span>And Wait for the page to load completely</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.ScanningServerErrorStepDef.disable_the_wifi()">
+                        <span>And Disable the wifi</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.PrescriptionInfoStepDef.click_on_lets_begin_button()">
+                        <span>And Click on Lets begin button</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.click_on_help_tab()">
+                        <span>And Click on Help tab</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.EnterPasscodeStepDef.wait_for_the_page_to_load_completely()">
+                        <span>And Wait for the page to load completely</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.help_page_should_be_displayed_in_english()">
+                        <span>Then Help page should be displayed in English</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.help_categories_should_be_displayed_in_english()">
+                        <span>And Help categories should be displayed in English</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.WelcomeScreenStepDef.User_kills_the_app()">
+                        <span>And User kills the app</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.WelcomeScreenStepDef.user_relaunches_the_app()">
+                        <span>And User relaunches the app</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.click_on_help_tab()">
+                        <span>And Click on Help tab</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.EnterPasscodeStepDef.wait_for_the_page_to_load_completely()">
+                        <span>And Wait for the page to load completely</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.help_cards_and_card_icon_under_sensor_and_patch_category_should_be_displayed_in_english()">
+                        <span>And Help cards and card icon under Sensor and Patch category should be displayed in English</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.help_cards_and_card_icon_under_app_details_category_should_be_displayed_in_english()">
+                        <span>And Help cards and card icon under App details category should be displayed in English</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.help_cards_and_card_icon_under_program_details_category_should_be_displayed_in_english()">
+                        <span>And Help cards and card icon under Program details category should be displayed in English</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.help_cards_and_card_icon_under_others_category_should_be_displayed_in_english()">
+                        <span>And Help cards and card icon under Others category should be displayed in English</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.contact_customer_support_button_in_help_tab_should_be_displayed_in_english()">
+                        <span>And Contact customer support button in help tab should be displayed in English</span>
+                        <div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header" role="tab">
+                    <div class="card-title">
+                      <div class="node" id="114"><span class="badge log pass-bg mr-2">Pass</span>Test Case 66158: Verify display of help card content in help page in offline mode</div>
+                    </div>
+                  </div>
+                  <div class="collapse">
+                    <div class="card-body">
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.user_is_on_the_help_page()">
+                        <span>When User is on the help page</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.WelcomeScreenStepDef.User_kills_the_app()">
+                        <span>And User kills the app</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.WelcomeScreenStepDef.user_relaunches_the_app()">
+                        <span>And User relaunches the app</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.click_on_help_tab()">
+                        <span>And Click on Help tab</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.EnterPasscodeStepDef.wait_for_the_page_to_load_completely()">
+                        <span>And Wait for the page to load completely</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.click_on_first_help_card()">
+                        <span>And Click on first help card</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.help_card_title_should_be_displayed_in_english()">
+                        <span>Then Help card title should be displayed in English</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.help_card_content_should_be_displayed_in_english()">
+                        <span>And Help card content should be displayed in English</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.help_card_image_should_be_displayed()">
+                        <span>And Help card image should be displayed</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.close_button_should_be_displayed()">
+                        <span>And Close button should be displayed</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.ScanningServerErrorStepDef.enable_the_wifi()">
+                        <span>And Enable the wifi</span>
+                        <div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header" role="tab">
+                    <div class="card-title">
+                      <div class="node" id="128"><span class="badge log pass-bg mr-2">Pass</span>Test Case 66142: Verify help page is displayed to user with all help cards in Spanish</div>
+                    </div>
+                  </div>
+                  <div class="collapse">
+                    <div class="card-body">
+                      <div class="step pass-bg" title="com.proteus.stepdef.WelcomeScreenStepDef.app_is_installed_on_device()">
+                        <span>Given App is installed on device</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.WelcomeScreenStepDef.user_launches_the_app()">
+                        <span>When User launches the app</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.WelcomeScreenStepDef.click_on_change_language_button()">
+                        <span>And Click on change language button</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.PrescriptionInfoStepDef.user_navigated_till_enter_passcode_page()">
+                        <span>And User navigated till enter passcode page</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.EnterPasscodeStepDef.enter_the_valid_passcode_from(java.lang.String)">
+                        <span>And Enter the valid passcode from "email"</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.PrescriptionInfoStepDef.click_on_lets_begin_button()">
+                        <span>And Click on Lets begin button</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.click_on_help_tab()">
+                        <span>And Click on Help tab</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.EnterPasscodeStepDef.wait_for_the_page_to_load_completely()">
+                        <span>And Wait for the page to load completely</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.help_page_should_be_displayed_in_spanish()">
+                        <span>Then Help page should be displayed in Spanish</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.help_categories_should_be_displayed_in_spanish()">
+                        <span>And Help categories should be displayed in Spanish</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.contact_customer_support_button_in_help_tab_should_be_displayed_in_spanish()">
+                        <span>And Contact customer support button in help tab should be displayed in Spanish</span>
+                        <div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header" role="tab">
+                    <div class="card-title">
+                      <div class="node" id="142"><span class="badge log pass-bg mr-2">Pass</span>Test Case 66147: Verify by killing app in help page</div>
+                    </div>
+                  </div>
+                  <div class="collapse">
+                    <div class="card-body">
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.user_is_on_the_help_page()">
+                        <span>When User is on the help page</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.WelcomeScreenStepDef.User_kills_the_app()">
+                        <span>And User kills the app</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.WelcomeScreenStepDef.user_relaunches_the_app()">
+                        <span>And User relaunches the app</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HomePageStepDef.patient_name_should_be_displayed_in_app_home_page_in_spanish()">
+                        <span>Then Patient name should be displayed in app home page in Spanish</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HomePageStepDef.prescription_card_title_should_be_displayed_in_spanish()">
+                        <span>And Prescription card title should be displayed in Spanish</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HomePageStepDef.prescription_details_button_should_be_displayed_in_spanish()">
+                        <span>And Prescription details button should be displayed in Spanish</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HomePageStepDef.record_button_should_be_displayed_in_spanish()">
+                        <span>And Record button should be displayed in Spanish</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HomePageStepDef.scroll_down_to_view_help_info_section()">
+                        <span>And Scroll down to view help info section</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HomePageStepDef.help_info_section_should_be_displayed()">
+                        <span>And Help info section should be displayed</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HomePageStepDef.help_info_section_title_should_be_in_spanish()">
+                        <span>And Help info section title should be in Spanish</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HomePageStepDef.help_cards_should_be_displayed_in_help_info_section()">
+                        <span>And Help cards should be displayed in help info section</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HomePageStepDef.help_cards_and_card_icon_for_before_start_of_program_should_be_displayed_in_spanish()">
+                        <span>And Help cards and card icon for before start of program should be displayed in Spanish</span>
+                        <div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header" role="tab">
+                    <div class="card-title">
+                      <div class="node" id="157"><span class="badge log pass-bg mr-2">Pass</span>Test Case 66143,66144: Verify help cards displayed in all help categories in Spanish</div>
+                    </div>
+                  </div>
+                  <div class="collapse">
+                    <div class="card-body">
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.user_is_on_the_help_page()">
+                        <span>When User is on the help page</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.WelcomeScreenStepDef.User_kills_the_app()">
+                        <span>And User kills the app</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.WelcomeScreenStepDef.user_relaunches_the_app()">
+                        <span>And User relaunches the app</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.click_on_help_tab()">
+                        <span>And Click on Help tab</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.EnterPasscodeStepDef.wait_for_the_page_to_load_completely()">
+                        <span>And Wait for the page to load completely</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.help_cards_and_card_icon_under_sensor_and_patch_category_should_be_displayed_in_spanish()">
+                        <span>Then Help cards and card icon under Sensor and Patch category should be displayed in Spanish</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.help_cards_and_card_icon_under_app_details_category_should_be_displayed_in_spanish()">
+                        <span>And Help cards and card icon under App details category should be displayed in Spanish</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.help_cards_and_card_icon_under_program_details_category_should_be_displayed_in_spanish()">
+                        <span>And Help cards and card icon under Program details category should be displayed in Spanish</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.help_cards_and_card_icon_under_others_category_should_be_displayed_in_spanish()">
+                        <span>And Help cards and card icon under Others category should be displayed in Spanish</span>
+                        <div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header" role="tab">
+                    <div class="card-title">
+                      <div class="node" id="169"><span class="badge log pass-bg mr-2">Pass</span>Test Case 66145: Verify contact customer support popup in Spanish</div>
+                    </div>
+                  </div>
+                  <div class="collapse">
+                    <div class="card-body">
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.user_is_on_the_help_page()">
+                        <span>When User is on the help page</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.NoPrescriptionMatchStepDef.click_on_contact_customer_support_button()">
+                        <span>And Click on Contact customer support button</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.TermsAndConditionsStepDef.customer_support_header_should_be_in_spanish()">
+                        <span>Then Customer support header should be in Spanish</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.TermsAndConditionsStepDef.customer_care_number_should_be_displayed()">
+                        <span>And Customer care number should be displayed</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.TermsAndConditionsStepDef.customer_care_content_should_be_in_spanish()">
+                        <span>And Customer care content should be in Spanish</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.reference_code_in_help_page_should_be_in_spanish()">
+                        <span>And Reference code in help page should be in Spanish</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.TermsAndConditionsStepDef.ok_button_should_be_in_spanish()">
+                        <span>And Ok button should be in Spanish</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.TermsAndConditionsStepDef.click_on_Ok_button()">
+                        <span>And Click on Ok button</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.contact_customer_support_button_in_help_tab_should_be_displayed_in_spanish()">
+                        <span>And Contact customer support button in help tab should be displayed in Spanish</span>
+                        <div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header" role="tab">
+                    <div class="card-title">
+                      <div class="node" id="181"><span class="badge log pass-bg mr-2">Pass</span>Test Case 66152: Verify display of help card content in help page in Spanish</div>
+                    </div>
+                  </div>
+                  <div class="collapse">
+                    <div class="card-body">
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.user_is_on_the_help_page()">
+                        <span>When User is on the help page</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.WelcomeScreenStepDef.User_kills_the_app()">
+                        <span>And User kills the app</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.WelcomeScreenStepDef.user_relaunches_the_app()">
+                        <span>And User relaunches the app</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.click_on_help_tab()">
+                        <span>And Click on Help tab</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.EnterPasscodeStepDef.wait_for_the_page_to_load_completely()">
+                        <span>And Wait for the page to load completely</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.click_on_first_help_card()">
+                        <span>And Click on first help card</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.help_card_title_should_be_displayed_in_spanish()">
+                        <span>Then Help card title should be displayed in Spanish</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.help_card_content_should_be_displayed_in_spanish()">
+                        <span>And Help card content should be displayed in Spanish</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.help_card_image_should_be_displayed()">
+                        <span>And Help card image should be displayed</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.close_button_should_be_displayed()">
+                        <span>And Close button should be displayed</span>
+                        <div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header" role="tab">
+                    <div class="card-title">
+                      <div class="node" id="194"><span class="badge log pass-bg mr-2">Pass</span>Test Case 66153: Verify by closing help card</div>
+                    </div>
+                  </div>
+                  <div class="collapse">
+                    <div class="card-body">
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.user_is_on_the_help_card_webview()">
+                        <span>When User is on the help card webview</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.click_on_close_button_on_card()">
+                        <span>And Click on close button on card</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.HelpStepDef.help_page_should_be_displayed_in_spanish()">
+                        <span>Then Help page should be displayed in Spanish</span>
+                        <div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header" role="tab">
+                    <div class="card-title">
+                      <div class="node" id="200"><span class="badge log fail-bg mr-2">Fail</span>Test Case 66148,66150,66158,66160: Verify help page is displayed to user with all help cards in Spanish in offline mode</div>
+                      <div class="status-avatar float-right mr-4">
+                        <i class="fa fa-paperclip"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="">
+                    <div class="card-body">
+                      <div class="step pass-bg" title="com.proteus.stepdef.WelcomeScreenStepDef.app_is_installed_on_device()">
+                        <span>Given App is installed on device</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.WelcomeScreenStepDef.user_launches_the_app()">
+                        <span>When User launches the app</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.WelcomeScreenStepDef.click_on_change_language_button()">
+                        <span>And Click on change language button</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.PrescriptionInfoStepDef.user_navigated_till_enter_passcode_page()">
+                        <span>And User navigated till enter passcode page</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.EnterPasscodeStepDef.wait_for_the_page_to_load_completely()">
+                        <span>And Wait for the page to load completely</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.EnterPasscodeStepDef.enter_the_valid_passcode_from(java.lang.String)">
+                        <span>And Enter the valid passcode from "email"</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="com.proteus.stepdef.ScanningServerErrorStepDef.disable_the_wifi()">
+                        <span>And Disable the wifi</span>
+                        <div>
+                        </div>
+                      </div>
+                      <div class="step fail-bg" title="com.proteus.stepdef.PrescriptionInfoStepDef.click_on_lets_begin_button()">
+                        <span>And Click on Lets begin button</span>
+                        <div>
+        <textarea disabled class="code-block">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of Located by By.chained({By.xpath: //android.view.ViewGroup[@resource-id="PrescriptionInfoButton"]}) (tried for 12 second(s) with 500 milliseconds interval)
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+	at com.proteus.pages.BasePage.waitForVisibility(BasePage.java:40)
+	at com.proteus.pages.BasePage.click(BasePage.java:69)
+	at com.proteus.pages.PrescriptionInfoPage.clickLetsBeginBtn(PrescriptionInfoPage.java:119)
+	at com.proteus.stepdef.PrescriptionInfoStepDef.click_on_lets_begin_button(PrescriptionInfoStepDef.java:134)
+	at ✽.Click on Lets begin button(file:///Users/nandan/Documents/MobileAutomation/ProteusAutomation/src/test/resources/features/HelpPage.feature:208)
+Caused by: org.openqa.selenium.NoSuchElementException: Can't locate an element by this strategy: By.chained({By.xpath: //android.view.ViewGroup[@resource-id="PrescriptionInfoButton"]})
+	at io.appium.java_client.pagefactory.AppiumElementLocator.findElement(AppiumElementLocator.java:166)
+	at io.appium.java_client.pagefactory.interceptors.InterceptorOfASingleElement.call(InterceptorOfASingleElement.java:75)
+	at io.appium.java_client.proxy.Interceptor.intercept(Interceptor.java:78)
+	at org.openqa.selenium.remote.RemoteWebElement$ByteBuddy$qdfaYd04.isDisplayed(Unknown Source)
+	at org.openqa.selenium.support.ui.ExpectedConditions.elementIfVisible(ExpectedConditions.java:304)
+	at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:290)
+	at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:287)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:203)
+	at com.proteus.pages.BasePage.waitForVisibility(BasePage.java:40)
+	at com.proteus.pages.BasePage.click(BasePage.java:69)
+	at com.proteus.pages.PrescriptionInfoPage.clickLetsBeginBtn(PrescriptionInfoPage.java:119)
+	at com.proteus.stepdef.PrescriptionInfoStepDef.click_on_lets_begin_button(PrescriptionInfoStepDef.java:134)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at io.cucumber.java.Invoker.doInvoke(Invoker.java:66)
+	at io.cucumber.java.Invoker.invoke(Invoker.java:24)
+	at io.cucumber.java.AbstractGlueDefinition.invokeMethod(AbstractGlueDefinition.java:47)
+	at io.cucumber.java.JavaStepDefinition.execute(JavaStepDefinition.java:29)
+	at io.cucumber.core.runner.CoreStepDefinition.execute(CoreStepDefinition.java:66)
+	at io.cucumber.core.runner.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:63)
+	at io.cucumber.core.runner.ExecutionMode$1.execute(ExecutionMode.java:10)
+	at io.cucumber.core.runner.TestStep.executeStep(TestStep.java:84)
+	at io.cucumber.core.runner.TestStep.run(TestStep.java:56)
+	at io.cucumber.core.runner.PickleStepTestStep.run(PickleStepTestStep.java:51)
+	at io.cucumber.core.runner.TestCase.run(TestCase.java:84)
+	at io.cucumber.core.runner.Runner.runPickle(Runner.java:75)
+	at io.cucumber.testng.TestNGCucumberRunner.lambda$runScenario$1(TestNGCucumberRunner.java:132)
+	at io.cucumber.core.runtime.CucumberExecutionContext.lambda$runTestCase$5(CucumberExecutionContext.java:137)
+	at io.cucumber.core.runtime.RethrowingThrowableCollector.executeAndThrow(RethrowingThrowableCollector.java:23)
+	at io.cucumber.core.runtime.CucumberExecutionContext.runTestCase(CucumberExecutionContext.java:137)
+	at io.cucumber.testng.TestNGCucumberRunner.runScenario(TestNGCucumberRunner.java:129)
+	at com.proteus.runners.BaseRunnerTest.scenario(BaseRunnerTest.java:59)
+	at jdk.internal.reflect.GeneratedMethodAccessor98.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:848)
+	at org.testng.TestRunner.run(TestRunner.java:621)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:481)
+	at org.testng.internal.thread.ThreadUtil.lambda$execute$0(ThreadUtil.java:58)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+Caused by: org.openqa.selenium.TimeoutException: Expected condition failed: waiting for io.appium.java_client.pagefactory.AppiumElementLocator$WaitingFunction@4dfde877 (tried for 1 second(s) with 500 milliseconds interval)
+	at org.openqa.selenium.support.ui.FluentWait.timeoutException(FluentWait.java:265)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+	at io.appium.java_client.pagefactory.AppiumElementLocator.waitFor(AppiumElementLocator.java:135)
+	at io.appium.java_client.pagefactory.AppiumElementLocator.findElement(AppiumElementLocator.java:160)
+	... 54 more
+Caused by: org.openqa.selenium.NoSuchElementException: Cannot locate an element using By.chained({By.xpath: //android.view.ViewGroup[@resource-id="PrescriptionInfoButton"]})
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: '4.25.0', revision: '8a8aea2337'
+System info: os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.16', java.version: '15.0.2'
+Driver info: driver.version: RemoteWebDriver
+	at io.appium.java_client.pagefactory.bys.builder.ByChained.findElement(ByChained.java:74)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$1.findElement(ElementLocation.java:139)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:368)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:362)
+	at io.appium.java_client.pagefactory.bys.ContentMappedBy.findElement(ContentMappedBy.java:53)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$1.findElement(ElementLocation.java:139)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:368)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:362)
+	at io.appium.java_client.pagefactory.AppiumElementLocator.lambda$findElement$1(AppiumElementLocator.java:160)
+	at io.appium.java_client.pagefactory.AppiumElementLocator$WaitingFunction.apply(AppiumElementLocator.java:217)
+	at io.appium.java_client.pagefactory.AppiumElementLocator$WaitingFunction.apply(AppiumElementLocator.java:210)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:203)
+	... 56 more
+</textarea>
+
+                        </div>
+                      </div>
+                      <div class="step skip-bg" title="com.proteus.stepdef.HelpStepDef.click_on_help_tab()">
+                        <span>And Click on Help tab</span>
+                        <div>Step skipped
+                        </div>
+                      </div>
+                      <div class="step skip-bg" title="com.proteus.stepdef.EnterPasscodeStepDef.wait_for_the_page_to_load_completely()">
+                        <span>And Wait for the page to load completely</span>
+                        <div>Step skipped
+                        </div>
+                      </div>
+                      <div class="step skip-bg" title="com.proteus.stepdef.HelpStepDef.help_page_should_be_displayed_in_spanish()">
+                        <span>Then Help page should be displayed in Spanish</span>
+                        <div>Step skipped
+                        </div>
+                      </div>
+                      <div class="step skip-bg" title="com.proteus.stepdef.HelpStepDef.help_categories_should_be_displayed_in_spanish()">
+                        <span>And Help categories should be displayed in Spanish</span>
+                        <div>Step skipped
+                        </div>
+                      </div>
+                      <div class="step skip-bg" title="com.proteus.stepdef.WelcomeScreenStepDef.User_kills_the_app()">
+                        <span>And User kills the app</span>
+                        <div>Step skipped
+                        </div>
+                      </div>
+                      <div class="step skip-bg" title="com.proteus.stepdef.WelcomeScreenStepDef.user_relaunches_the_app()">
+                        <span>And User relaunches the app</span>
+                        <div>Step skipped
+                        </div>
+                      </div>
+                      <div class="step skip-bg" title="com.proteus.stepdef.HelpStepDef.click_on_help_tab()">
+                        <span>And Click on Help tab</span>
+                        <div>Step skipped
+                        </div>
+                      </div>
+                      <div class="step skip-bg" title="com.proteus.stepdef.EnterPasscodeStepDef.wait_for_the_page_to_load_completely()">
+                        <span>And Wait for the page to load completely</span>
+                        <div>Step skipped
+                        </div>
+                      </div>
+                      <div class="step skip-bg" title="com.proteus.stepdef.HelpStepDef.help_cards_and_card_icon_under_sensor_and_patch_category_should_be_displayed_in_spanish()">
+                        <span>And Help cards and card icon under Sensor and Patch category should be displayed in Spanish</span>
+                        <div>Step skipped
+                        </div>
+                      </div>
+                      <div class="step skip-bg" title="com.proteus.stepdef.HelpStepDef.help_cards_and_card_icon_under_app_details_category_should_be_displayed_in_spanish()">
+                        <span>And Help cards and card icon under App details category should be displayed in Spanish</span>
+                        <div>Step skipped
+                        </div>
+                      </div>
+                      <div class="step skip-bg" title="com.proteus.stepdef.HelpStepDef.help_cards_and_card_icon_under_program_details_category_should_be_displayed_in_spanish()">
+                        <span>And Help cards and card icon under Program details category should be displayed in Spanish</span>
+                        <div>Step skipped
+                        </div>
+                      </div>
+                      <div class="step skip-bg" title="com.proteus.stepdef.HelpStepDef.help_cards_and_card_icon_under_others_category_should_be_displayed_in_spanish()">
+                        <span>And Help cards and card icon under Others category should be displayed in Spanish</span>
+                        <div>Step skipped
+                        </div>
+                      </div>
+                      <div class="step skip-bg" title="com.proteus.stepdef.HelpStepDef.contact_customer_support_button_in_help_tab_should_be_displayed_in_spanish()">
+                        <span>And Contact customer support button in help tab should be displayed in Spanish</span>
+                        <div>Step skipped
+                        </div>
+                      </div>
+                      <div class="step skip-bg" title="com.proteus.stepdef.ScanningServerErrorStepDef.enable_the_wifi()">
+                        <span>And Enable the wifi</span>
+                        <div>Step skipped
+                        </div>
+                      </div>
+                      <div class="step pass-bg" title="AFTER">
+                        <span>com.proteus.stepdef.Hooks.quit(io.cucumber.java.Scenario)</span>
+                        <div>Test Case 66148,66150,66158,66160: Verify help page is displayed to user with all help cards in Spanish in offline mode
+                          <div class="row mb-3"><div class="col-md-3">
+                            <img data-featherlight='../Screenshots/embedded1.png' src="../Screenshots/embedded1.png">
+
+                          </div></div>
+                        </div>
+                        <div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      </div>
+      <div class="test-content scrollable">
+        <div class="test-content-tools">
+          <ul><li><a class="back-to-test" href="#"><i class="fa fa-arrow-left"></i></a></li></ul>
+        </div>
+        <div class="test-content-detail"><div class="detail-body"></div></div>
+      </div></div>
+      <div class="test-wrapper row view category-view attributes-view">
+        <div class="test-list">
+          <div class="test-list-tools">
+            <ul class="tools pull-left"><li><a href=""><span class="font-size-14">Category</span></a></li></ul>
+            <ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">2</span></a></li></ul>
+          </div>
+          <div class="test-list-wrapper scrollable">
+            <ul class="test-list-item">
+              <li class="test-item">
+                <div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>8</span>
+</span>
+                  <p class="name">@Smoke</p>
+                  <p class="duration text-sm">8 tests</p>
+                </div>
+                <div class="test-contents d-none">
+                  <div class="info">
+                    <h4>@Smoke</h4>
+                    <span status="pass" class='badge log pass-bg'>8 passed</span>
+                  </div>
+                  <table class='table table-sm mt-4'>
+                    <thead>
+                    <tr>
+                      <th class="status-col">Status</th>
+                      <th class="timestamp-col">Timestamp</th>
+                      <th>TestName</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="tag-test-status" status="pass">
+                      <td><span class="badge log pass-bg">Pass</span></td>
+                      <td>15:38:42 pm</td>
+                      <td>
+                        <a href="#" class="linked" test-id='1' id='2'>Test Case 66142: Verify help page is displayed to user with all help cards in English</a>
+                        <div class="">
+                          <span class="badge badge-default">App Help Page Functionality.Test Case 66142: Verify help page is displayed to user with all help cards in English</span>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="tag-test-status" status="pass">
+                      <td><span class="badge log pass-bg">Pass</span></td>
+                      <td>15:40:25 pm</td>
+                      <td>
+                        <a href="#" class="linked" test-id='1' id='15'>Test Case 66147: Verify by killing app in help page</a>
+                        <div class="">
+                          <span class="badge badge-default">App Help Page Functionality.Test Case 66147: Verify by killing app in help page</span>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="tag-test-status" status="pass">
+                      <td><span class="badge log pass-bg">Pass</span></td>
+                      <td>15:40:41 pm</td>
+                      <td>
+                        <a href="#" class="linked" test-id='1' id='22'>Test Case 66143,66144: Verify help cards displayed in all help categories in English</a>
+                        <div class="">
+                          <span class="badge badge-default">App Help Page Functionality.Test Case 66143,66144: Verify help cards displayed in all help categories in English</span>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="tag-test-status" status="pass">
+                      <td><span class="badge log pass-bg">Pass</span></td>
+                      <td>15:42:12 pm</td>
+                      <td>
+                        <a href="#" class="linked" test-id='1' id='54'>Test Case 66152: Verify display of help card content in help page</a>
+                        <div class="">
+                          <span class="badge badge-default">App Help Page Functionality.Test Case 66152: Verify display of help card content in help page</span>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="tag-test-status" status="pass">
+                      <td><span class="badge log pass-bg">Pass</span></td>
+                      <td>15:42:26 pm</td>
+                      <td>
+                        <a href="#" class="linked" test-id='1' id='67'>Test Case 66153: Verify by closing help card</a>
+                        <div class="">
+                          <span class="badge badge-default">App Help Page Functionality.Test Case 66153: Verify by closing help card</span>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="tag-test-status" status="pass">
+                      <td><span class="badge log pass-bg">Pass</span></td>
+                      <td>15:45:59 pm</td>
+                      <td>
+                        <a href="#" class="linked" test-id='1' id='128'>Test Case 66142: Verify help page is displayed to user with all help cards in Spanish</a>
+                        <div class="">
+                          <span class="badge badge-default">App Help Page Functionality.Test Case 66142: Verify help page is displayed to user with all help cards in Spanish</span>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="tag-test-status" status="pass">
+                      <td><span class="badge log pass-bg">Pass</span></td>
+                      <td>15:48:02 pm</td>
+                      <td>
+                        <a href="#" class="linked" test-id='1' id='157'>Test Case 66143,66144: Verify help cards displayed in all help categories in Spanish</a>
+                        <div class="">
+                          <span class="badge badge-default">App Help Page Functionality.Test Case 66143,66144: Verify help cards displayed in all help categories in Spanish</span>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="tag-test-status" status="pass">
+                      <td><span class="badge log pass-bg">Pass</span></td>
+                      <td>15:49:26 pm</td>
+                      <td>
+                        <a href="#" class="linked" test-id='1' id='181'>Test Case 66152: Verify display of help card content in help page in Spanish</a>
+                        <div class="">
+                          <span class="badge badge-default">App Help Page Functionality.Test Case 66152: Verify display of help card content in help page in Spanish</span>
+                        </div>
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </li>
+              <li class="test-item">
+                <div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>14</span>
+</span>
+                  <p class="name">@Regression</p>
+                  <p class="duration text-sm">14 tests</p>
+                </div>
+                <div class="test-contents d-none">
+                  <div class="info">
+                    <h4>@Regression</h4>
+                    <span status="pass" class='badge log pass-bg'>14 passed</span>
+                  </div>
+                  <table class='table table-sm mt-4'>
+                    <thead>
+                    <tr>
+                      <th class="status-col">Status</th>
+                      <th class="timestamp-col">Timestamp</th>
+                      <th>TestName</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="tag-test-status" status="pass">
+                      <td><span class="badge log pass-bg">Pass</span></td>
+                      <td>15:38:42 pm</td>
+                      <td>
+                        <a href="#" class="linked" test-id='1' id='2'>Test Case 66142: Verify help page is displayed to user with all help cards in English</a>
+                        <div class="">
+                          <span class="badge badge-default">App Help Page Functionality.Test Case 66142: Verify help page is displayed to user with all help cards in English</span>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="tag-test-status" status="pass">
+                      <td><span class="badge log pass-bg">Pass</span></td>
+                      <td>15:40:25 pm</td>
+                      <td>
+                        <a href="#" class="linked" test-id='1' id='15'>Test Case 66147: Verify by killing app in help page</a>
+                        <div class="">
+                          <span class="badge badge-default">App Help Page Functionality.Test Case 66147: Verify by killing app in help page</span>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="tag-test-status" status="pass">
+                      <td><span class="badge log pass-bg">Pass</span></td>
+                      <td>15:40:41 pm</td>
+                      <td>
+                        <a href="#" class="linked" test-id='1' id='22'>Test Case 66143,66144: Verify help cards displayed in all help categories in English</a>
+                        <div class="">
+                          <span class="badge badge-default">App Help Page Functionality.Test Case 66143,66144: Verify help cards displayed in all help categories in English</span>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="tag-test-status" status="pass">
+                      <td><span class="badge log pass-bg">Pass</span></td>
+                      <td>15:41:57 pm</td>
+                      <td>
+                        <a href="#" class="linked" test-id='1' id='32'>Test Case 66145,66156: : Verify contact customer support popup in English</a>
+                        <div class="">
+                          <span class="badge badge-default">App Help Page Functionality.Test Case 66145,66156: : Verify contact customer support popup in English</span>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="tag-test-status" status="pass">
+                      <td><span class="badge log pass-bg">Pass</span></td>
+                      <td>15:42:06 pm</td>
+                      <td>
+                        <a href="#" class="linked" test-id='1' id='42'>Test Case 66149,66157: Verify ok button on customer care support popup</a>
+                        <div class="">
+                          <span class="badge badge-default">App Help Page Functionality.Test Case 66149,66157: Verify ok button on customer care support popup</span>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="tag-test-status" status="pass">
+                      <td><span class="badge log pass-bg">Pass</span></td>
+                      <td>15:42:12 pm</td>
+                      <td>
+                        <a href="#" class="linked" test-id='1' id='54'>Test Case 66152: Verify display of help card content in help page</a>
+                        <div class="">
+                          <span class="badge badge-default">App Help Page Functionality.Test Case 66152: Verify display of help card content in help page</span>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="tag-test-status" status="pass">
+                      <td><span class="badge log pass-bg">Pass</span></td>
+                      <td>15:42:26 pm</td>
+                      <td>
+                        <a href="#" class="linked" test-id='1' id='67'>Test Case 66153: Verify by closing help card</a>
+                        <div class="">
+                          <span class="badge badge-default">App Help Page Functionality.Test Case 66153: Verify by closing help card</span>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="tag-test-status" status="pass">
+                      <td><span class="badge log pass-bg">Pass</span></td>
+                      <td>15:42:29 pm</td>
+                      <td>
+                        <a href="#" class="linked" test-id='1' id='73'>Test Case 66154: Verify switching app to background when help card is open</a>
+                        <div class="">
+                          <span class="badge badge-default">App Help Page Functionality.Test Case 66154: Verify switching app to background when help card is open</span>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="tag-test-status" status="pass">
+                      <td><span class="badge log pass-bg">Pass</span></td>
+                      <td>15:42:34 pm</td>
+                      <td>
+                        <a href="#" class="linked" test-id='1' id='83'>Test Case 66155: Verify killing app when help card is open</a>
+                        <div class="">
+                          <span class="badge badge-default">App Help Page Functionality.Test Case 66155: Verify killing app when help card is open</span>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="tag-test-status" status="pass">
+                      <td><span class="badge log pass-bg">Pass</span></td>
+                      <td>15:42:47 pm</td>
+                      <td>
+                        <a href="#" class="linked" test-id='1' id='90'>Test Case 66148: Verify help page is displayed to user with all help cards in English in offline mode</a>
+                        <div class="">
+                          <span class="badge badge-default">App Help Page Functionality.Test Case 66148: Verify help page is displayed to user with all help cards in English in offline mode</span>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="tag-test-status" status="pass">
+                      <td><span class="badge log pass-bg">Pass</span></td>
+                      <td>15:45:45 pm</td>
+                      <td>
+                        <a href="#" class="linked" test-id='1' id='114'>Test Case 66158: Verify display of help card content in help page in offline mode</a>
+                        <div class="">
+                          <span class="badge badge-default">App Help Page Functionality.Test Case 66158: Verify display of help card content in help page in offline mode</span>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="tag-test-status" status="pass">
+                      <td><span class="badge log pass-bg">Pass</span></td>
+                      <td>15:45:59 pm</td>
+                      <td>
+                        <a href="#" class="linked" test-id='1' id='128'>Test Case 66142: Verify help page is displayed to user with all help cards in Spanish</a>
+                        <div class="">
+                          <span class="badge badge-default">App Help Page Functionality.Test Case 66142: Verify help page is displayed to user with all help cards in Spanish</span>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="tag-test-status" status="pass">
+                      <td><span class="badge log pass-bg">Pass</span></td>
+                      <td>15:48:02 pm</td>
+                      <td>
+                        <a href="#" class="linked" test-id='1' id='157'>Test Case 66143,66144: Verify help cards displayed in all help categories in Spanish</a>
+                        <div class="">
+                          <span class="badge badge-default">App Help Page Functionality.Test Case 66143,66144: Verify help cards displayed in all help categories in Spanish</span>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="tag-test-status" status="pass">
+                      <td><span class="badge log pass-bg">Pass</span></td>
+                      <td>15:49:26 pm</td>
+                      <td>
+                        <a href="#" class="linked" test-id='1' id='181'>Test Case 66152: Verify display of help card content in help page in Spanish</a>
+                        <div class="">
+                          <span class="badge badge-default">App Help Page Functionality.Test Case 66152: Verify display of help card content in help page in Spanish</span>
+                        </div>
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="test-content scrollable">
+          <div class="test-content-detail">
+            <div class="detail-body"></div>
+          </div>
+        </div>
+      </div><div class="test-wrapper row view exception-view attributes-view">
+      <div class="test-list">
+        <div class="test-list-tools">
+          <ul class="tools pull-left"><li><a href=""><span class="font-size-14">Exception</span></a></li></ul>
+          <ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">1</span></a></li></ul>
+        </div>
+        <div class="test-list-wrapper scrollable">
+          <ul class="test-list-item">
+            <li class="test-item">
+              <div class="test-detail">
+<span class="meta">
+<span class='badge log badge-danger'>1</span>
+</span>
+                <p class="name">org.openqa.selenium.TimeoutException</p>
+                <p class="duration text-sm">1 tests</p>
+              </div>
+              <div class="test-contents d-none">
+                <div class="info">
+                  <h4>org.openqa.selenium.TimeoutException</h4>
+                  <span status="fail" class='badge log badge-danger'>1 failed</span>
+                </div>
+                <table class='table table-sm mt-4'>
+                  <thead>
+                  <tr>
+                    <th class="status-col">Status</th>
+                    <th class="timestamp-col">Timestamp</th>
+                    <th>TestName</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr class="tag-test-status" status="fail">
+                    <td><span class="badge log fail-bg">Fail</span></td>
+                    <td>15:50:36 pm</td>
+                    <td>
+                      <a href="#" class="linked" test-id='1' id='209'>And Click on Lets begin button</a>
+                      <div class="">
+                        <span class="badge badge-default">App Help Page Functionality.Test Case 66148,66150,66158,66160: Verify help page is displayed to user with all help cards in Spanish in offline mode.And Click on Lets begin button</span>
+                      </div>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="test-content scrollable">
+        <div class="test-content-detail">
+          <div class="detail-body"></div>
+        </div>
+      </div>
+    </div>        </div>
+  </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@d6562a79075e061305ccfdb82f01e5e195e2d307/spark/js/spark-script.js"></script>
+<script type="text/javascript"></script></body>
+</html>
