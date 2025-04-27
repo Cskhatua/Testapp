@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Dashboard - Reports Tab</title>
   <style>
-    /* Basic Reset and Setup */
+    /* Existing styles */
     * {
       margin: 0;
       padding: 0;
@@ -17,233 +17,72 @@
       font-family: Arial, sans-serif;
       background: #f4f4f4;
     }
-    .container {
-      display: flex;
-      flex-direction: column;
-      height: 100%;
+    /* Additional styles for dynamic report links */
+    h3 {
+      color: #007BFF;
     }
-    .header {
-      height: 60px;
-      background: #007BFF; /* blue */
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      flex-shrink: 0;
+    .report-section ul {
+      list-style-type: none;
+      padding: 0;
     }
-    .body-content {
-      flex: 1;
-      display: flex;
-      overflow: hidden;
-    }
-    .sidebar {
-      width: 220px;
-      background: #333;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      padding-top: 20px;
-      flex-shrink: 0;
-    }
-    .sidebar button {
-      padding: 12px 20px;
-      background: none;
-      border: none;
-      color: white;
-      text-align: left;
-      font-size: 16px;
-      cursor: pointer;
-      width: 100%;
-      transition: background 0.3s;
-    }
-    .sidebar button:hover, .sidebar button.active {
-      background: #575757;
-    }
-    .main {
-      flex: 1;
-      padding: 20px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-    .card {
-      background: white;
-      padding: 20px;
-      flex: 1;
-      overflow-y: auto;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      position: relative;
-      display: flex;
-      flex-direction: column;
-    }
-    .tab-content {
-      display: none;
-      height: 100%;
-      animation: fadeIn 0.5s;
-    }
-    .tab-content.active {
-      display: flex;
-      flex-direction: column;
-    }
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
-    }
-    /* Buttons Top Area */
-    .toggle-buttons {
-      margin-bottom: 20px;
-      display: flex;
-      gap: 10px;
-    }
-    .toggle-buttons button {
-      padding: 10px 20px;
-      border: none;
-      background: #eee;
-      cursor: pointer;
-      border-radius: 5px;
-      font-size: 16px;
-      transition: background 0.3s;
-    }
-    .toggle-buttons button:hover {
-      background: #007BFF;
-      color: white;
-    }
-    /* iOS + Android Sections Side-by-Side */
-    .report-sections {
-      flex: 1;
-      display: flex;
-      gap: 20px;
-      overflow-y: auto;
-    }
-    .report-section {
-      background: #fafafa;
-      flex: 1;
-      padding: 20px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      overflow-y: auto;
-    }
-    .report-section a {
-      display: block;
+    .report-section ul li {
       margin-bottom: 8px;
-      color: #007BFF;
+    }
+    .report-section ul li a {
       text-decoration: none;
-      font-size: 14px;
-      word-break: break-word;
-    }
-    .report-section a:hover {
-      text-decoration: underline;
-    }
-    main a {
-      display: block;
-      margin-bottom: 6px;
-      color: #007BFF;
-      text-decoration: none;
-      font-size: 15px;
-    }
-    main a:hover {
-      text-decoration: underline;
-    }
-    h2, h3 {
-      margin-bottom: 10px;
-    }
-    hr {
-      margin: 15px 0;
-    }
-    /* Total Reports Box */
-    .total-reports-box {
-      background: #fff;
-      border: 1px solid #ddd;
-      padding: 30px 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      text-align: center;
-      width: 250px;
-      margin: 20px auto;
-    }
-    .total-reports-box h3 {
-      font-size: 18px;
-      margin-bottom: 10px;
-      color: #333;
-    }
-    .total-reports-box .count {
-      font-size: 30px;
-      font-weight: bold;
       color: #007BFF;
     }
-    /* Back to Top button */
-    #backToTop {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background: #007BFF;
-      color: white;
-      padding: 10px 16px;
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      font-size: 18px;
-      display: none;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-      transition: opacity 0.3s;
-    }
-    #backToTop:hover {
-      background: #0062cc;
+    .report-section ul li a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="header">
-      Proteus Automation Reports
+<div class="container">
+  <div class="header">
+    Proteus Automation Reports
+  </div>
+  <div class="body-content">
+    <div class="sidebar">
+      <button id="homeBtn" onclick="showTab('home', this)" class="active">Home</button>
+      <button id="reportsBtn" onclick="showTab('reports', this)">Reports</button>
     </div>
-    <div class="body-content">
-      <div class="sidebar">
-        <button id="homeBtn" onclick="showTab('home', this)" class="active">Home</button>
-        <button id="reportsBtn" onclick="showTab('reports', this)">Reports</button>
+    <div class="main">
+      <div id="home" class="tab-content active">
+        <div class="card">
+          <h2>Welcome to the Dashboard</h2>
+          <p>Select "Reports" from the left menu to view HTML reports.</p>
+          <div class="total-reports-box" id="totalReports">
+            <h3>Total Reports</h3>
+            <div class="count" id="reportCount">0</div>
+          </div>
+        </div>
       </div>
-      <div class="main">
-        <div id="home" class="tab-content active">
-          <div class="card">
-            <h2>Welcome to the Dashboard</h2>
-            <p>Select "Reports" from the left menu to view HTML reports.</p>
-            <!-- Total Reports Component (Centered Box) -->
-            <div class="total-reports-box" id="totalReports">
-              <h3>Total Reports</h3>
-              <div class="count" id="reportCount">0</div>
+
+      <div id="reports" class="tab-content">
+        <div class="card" id="reportsCard">
+          <div class="report-sections">
+            <div id="iosReports" class="report-section">
+              <h3>iOS Reports</h3>
+              <ul id="iosLinks">
+                <!-- iOS links will be dynamically populated here -->
+              </ul>
+            </div>
+
+            <div id="androidReports" class="report-section">
+              <h3>Android Reports</h3>
+              <ul id="androidLinks">
+                <!-- Android links will be dynamically populated here -->
+              </ul>
             </div>
           </div>
         </div>
-
-        <div id="reports" class="tab-content">
-          <div class="card" id="reportsCard">
-            <div class="report-sections">
-              <div id="iosReports" class="report-section">
-                <h3>iOS Reports</h3>
-                <a href="./iOS/IOS_IPhone12_EditDiary_Report/Extent_Report_Jan17_09_35/">Extent_Report_Jan17_09_35</a>
-                <a href="./iOS/IOS_IPhone12_OfflineSync_Report/Extent_Report_Jan18_02_00/">Extent_Report_Jan18_02_00</a>
-              </div>
-
-              <div id="androidReports" class="report-section">
-                <h3>Android Reports</h3>
-                <a href="./Android/Android-html-report-2025-04-18T17-12-52/">Android-html-report-2025-04-18T17-12-52</a>
-                <a href="./Android/Android-html-report-2025-04-16T13-45-19/">Android-html-report-2025-04-16T13-45-19</a>
-                <a href="./Android/Android-html-report-2025-04-15T09-21-43/">Android-html-report-2025-04-15T09-21-43</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
   </div>
+</div>
 
-  <!-- Back to Top Button -->
-  <button id="backToTop" onclick="scrollToTop()">↑</button>
-
-  <script>
+<script>
     function showTab(tabId, element) {
       document.querySelectorAll('.tab-content').forEach(function(tab) {
         tab.classList.remove('active');
@@ -256,13 +95,8 @@
       document.getElementById('backToTop').style.display = (tabId === 'reports') ? 'block' : 'none';
 
       if (tabId === 'home') {
-        updateTotalReports(); // Update report count when switching to Home
+        updateTotalReports();
       }
-    }
-
-    function scrollToTop() {
-      const card = document.getElementById('reportsCard');
-      card.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function updateTotalReports() {
@@ -272,17 +106,39 @@
       document.getElementById('reportCount').textContent = totalReports;
     }
 
-    document.addEventListener('DOMContentLoaded', function() {
-      updateTotalReports(); // Initial report count update on page load
-      const card = document.getElementById('reportsCard');
-      card.addEventListener('scroll', function() {
-        const btn = document.getElementById('backToTop');
-        if (card.scrollTop > 200) {
-          btn.style.opacity = 1;
-        } else {
-          btn.style.opacity = 0;
+    // Fetch file list from a directory in the repository
+    async function fetchFiles(folder, targetListId) {
+      const repoOwner = "Cskhatua";
+      const repoName = "Testapp";
+      const branch = "gh-pages";
+      const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${folder}?ref=${branch}`;
+      try {
+        const response = await fetch(apiUrl);
+        if (!response.ok) {
+          throw new Error(`Error fetching ${folder} files`);
         }
-      });
+        const files = await response.json();
+        const listElement = document.getElementById(targetListId);
+
+        files.forEach(file => {
+          if (file.type === "dir" || file.type === "file") {
+            const listItem = document.createElement("li");
+            const link = document.createElement("a");
+            link.href = `https://github.com/${repoOwner}/${repoName}/tree/${branch}/${folder}/${file.name}`;
+            link.textContent = file.name;
+            listItem.appendChild(link);
+            listElement.appendChild(listItem);
+          }
+        });
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      fetchFiles("iOS", "iosLinks");
+      fetchFiles("Android", "androidLinks");
+      updateTotalReports();
     });
   </script>
 </body>
