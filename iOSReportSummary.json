@@ -1,0 +1,35 @@
+{
+  "platform": "iOS",
+  "totalReports": 3,
+  "totalFeaturesPassed": 18,
+  "totalFeaturesFailed": 10,
+  "totalPassChild": 150,
+  "totalFailChild": 17,
+  "totalSkipChild": 0,
+  "reports": [
+    {
+      "reportFolder": "Report_07022025",
+      "featuresPassed": 16,
+      "featuresFailed": 10,
+      "passChild": 133,
+      "failChild": 17,
+      "skipChild": 0
+    },
+    {
+      "reportFolder": "Report_12042025",
+      "featuresPassed": 1,
+      "featuresFailed": 0,
+      "passChild": 14,
+      "failChild": 0,
+      "skipChild": 0
+    },
+    {
+      "reportFolder": "Report_17012025",
+      "featuresPassed": 1,
+      "featuresFailed": 0,
+      "passChild": 3,
+      "failChild": 0,
+      "skipChild": 0
+    }
+  ]
+}
