@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard - Reports Tab</title>
   <style>
+    /* Existing styles */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { height: 100%; font-family: Arial, sans-serif; background: #f4f4f4; }
     .container { display: flex; flex-direction: column; height: 100%; }
@@ -33,8 +34,12 @@
     .tab-content { display: none; height: 100%; }
     .tab-content.active { display: flex; flex-direction: column; }
     .report-section {
-      background: #fafafa; padding: 20px; border: 1px solid #ddd;
-      border-radius: 8px; margin-top: 20px;
+      margin-bottom: 20px;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 48%;
+      box-sizing: border-box;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
       transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
     }
@@ -42,137 +47,31 @@
       transform: translateY(-4px);
       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
     }
-    .report-section h3 { margin-bottom: 10px; }
-    .report-section p { margin-bottom: 6px; }
-
-    #backToTop {
-      position: fixed; bottom: 30px; right: 30px;
-      background: #007BFF; color: white; padding: 10px 16px;
-      border: none; border-radius: 50px; cursor: pointer; font-size: 18px;
-      display: none; box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    }
-    #backToTop:hover { background: #0062cc; }
-
-    #reports-container {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-around;
-      margin-top: 20px;
-      flex-wrap: wrap;
-      flex: 1;
-      align-items: stretch;
-    }
-    #reports-container .report-section {
-      width: 45%;
-      margin-bottom: 20px;
-      display: flex;
-      flex-direction: column;
-    }
-    #reports-container .report-section ul {
-      flex: 1;
-    }
-
-    #totalReports {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 20px;
-    }
-
-    #totalReports button {
-      padding: 15px 30px;
-      border-radius: 10px;
-      background-color: #007bff;
-      color: white;
-      font-size: 20px;
-      cursor: pointer;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-      transition: all 0.3s ease;
-      border: none;
-    }
-
-    #totalReports button:hover {
-      background-color: #0056b3;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-    }
-
-    #passFailSummary {
-      margin-top: 10px;
+    .report-section h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
       text-align: center;
     }
-
-    #summary-container {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: stretch;
-      margin-top: 20px;
-      gap: 20px;
-      flex-wrap: wrap;
+    .report-section table {
+      width: 100%;
+      text-align: left;
+      border-collapse: collapse;
     }
-
-    .summary-box {
-      width: 48%;
-      aspect-ratio: 1 / 1;
-      background-color: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+    .report-section th, .report-section td {
+      padding: 8px;
+      border: 1px solid #ddd;
       text-align: center;
-      cursor: pointer;
-      transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-      position: relative;
-      overflow: hidden;
     }
-
-    .summary-box:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+    .report-section th {
+      background-color: #f4f4f4;
+      font-weight: bold;
     }
-
-    .summary-box h3 {
-      font-size: 1.4rem;
-      margin-bottom: 5px;
-      color: #333;
-      position: absolute;
-      top: 10%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 90%;
-    }
-
-    .summary-box p {
-      font-size: 1.1rem;
-      color: #555;
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 90%;
-    }
-
-    #iosSummary p:nth-of-type(1) { top: 30%; }
-    #iosSummary p:nth-of-type(2) { top: 45%; }
-    #iosSummary p:nth-of-type(3) { top: 60%; }
-    #iosSummary p:nth-of-type(4) { top: 75%; }
-    #iosSummary p:nth-of-type(5) { top: 90%; }
-
-    #androidSummary p:nth-of-type(1) { top: 30%; }
-    #androidSummary p:nth-of-type(2) { top: 45%; }
-    #androidSummary p:nth-of-type(3) { top: 60%; }
-    #androidSummary p:nth-of-type(4) { top: 75%; }
-    #androidSummary p:nth-of-type(5) { top: 90%; }
-
-    @media (max-width: 768px) {
+    @media (max-width: 600px) {
       #summary-container {
         flex-direction: column;
-        align-items: center;
       }
-      .summary-box {
+      .report-section {
         width: 100%;
-        aspect-ratio: auto;
       }
     }
   </style>
@@ -190,34 +89,6 @@
         <div class="card">
           <h2>Welcome to the Dashboard</h2>
           <p>Select "Reports" from the left menu to view HTML reports.</p>
-          <div id="totalReports">
-            <button>
-              Total Reports Available: <span id="reportCount">0</span>
-              <div id="passFailSummary"></div>
-            </button>
-          </div>
-
-          <div id="summary-container">
-            <div id="iosSummary" class="summary-box" onclick="showReports('ios')">
-              <h3>iOS Execution Summary</h3>
-              <p>Total Reports: <span id="iosReportsCount">0</span></p>
-              <p>Features Passed: <span id="iosFeaturesPassed">-</span></p>
-              <p>Features Failed: <span id="iosFeaturesFailed">-</span></p>
-              <p>Scenarios Passed: <span id="iosScenariosPassed">-</span></p>
-              <p>Scenarios Failed: <span id="iosScenariosFailed">-</span></p>
-              <p>Scenarios Skipped: <span id="iosScenariosSkipped">-</span></p>
-            </div>
-            <div id="androidSummary" class="summary-box" onclick="showReports('android')">
-              <h3>Android Execution Summary</h3>
-              <p>Total Reports: <span id="androidReportsCount">0</span></p>
-              <p>Features Passed: <span id="androidFeaturesPassed">-</span></p>
-              <p>Features Failed: <span id="androidFeaturesFailed">-</span></p>
-              <p>Scenarios Passed: <span id="androidScenariosPassed">-</span></p>
-              <p>Scenarios Failed: <span id="androidScenariosFailed">-</span></p>
-              <p>Scenarios Skipped: <span id="androidScenariosSkipped">-</span></p>
-            </div>
-          </div>
-
         </div>
       </div>
 
@@ -226,81 +97,79 @@
           <div id="reports-container">
             <div class="report-section">
               <h3>iOS Reports</h3>
-              <ul>
-                <li><a href="./iOS/Report_07022025/index.html">Report_07022025</a></li>
-                <li><a href="./iOS/Report_12042025/index.html">Report_12042025</a></li>
-                <li><a href="./iOS/Report_17012025/index.html">Report_17012025</a></li>
-              </ul>
+              <table>
+                <thead>
+                <tr>
+                  <th>Report</th>
+                  <th>Scenario P</th>
+                  <th>Scenario F</th>
+                  <th>Scenario S</th>
+                </tr>
+                </thead>
+                <tbody id="iosReportsTable">
+                <!-- iOS Report Rows Will Be Inserted Here -->
+                </tbody>
+              </table>
             </div>
             <div class="report-section">
               <h3>Android Reports</h3>
-              <ul>
-                <li><a href="./Android/Report_12042025/index.html">Report_12042025</a></li>
-                <li><a href="./Android/Report_17012025/index.html">Report_17012025</a></li>
-              </ul>
+              <table>
+                <thead>
+                <tr>
+                  <th>Report</th>
+                  <th>Scenario P</th>
+                  <th>Scenario F</th>
+                  <th>Scenario S</th>
+                </tr>
+                </thead>
+                <tbody id="androidReportsTable">
+                <!-- Android Report Rows Will Be Inserted Here -->
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </div>
 
-<button id="backToTop" onclick="scrollToTop()">↑</button>
-
 <script>
-  async function fetchPassFailFromReport(url) {
-    try {
-      const response = await fetch(url);
-      if (!response.ok) return { pass: 0, fail: 0 };
-      const text = await response.text();
-      const doc = new DOMParser().parseFromString(text, 'text/html');
-      const bodyText = doc.body.textContent || "";
-      const pass = parseInt((bodyText.match(/Pass(?:ed)?:\s*(\d+)/i) || [])[1]) || 0;
-      const fail = parseInt((bodyText.match(/Fail(?:ed)?:\s*(\d+)/i) || [])[1]) || 0;
-      return { pass, fail };
-    } catch {
-      return { pass: 0, fail: 0 };
-    }
-  }
-
-  async function loadPlatformSummary(platform, fileName) {
+  async function fetchReportData(fileName) {
     try {
       const response = await fetch(fileName);
-      if (!response.ok) throw new Error();
+      if (!response.ok) throw new Error(`Failed to load ${fileName}`);
       const data = await response.json();
-
-      document.getElementById(`${platform}ReportsCount`).textContent = data.totalReports;
-      document.getElementById(`${platform}FeaturesPassed`).textContent = data.totalFeaturesPassed;
-      document.getElementById(`${platform}FeaturesFailed`).textContent = data.totalFeaturesFailed;
-      document.getElementById(`${platform}ScenariosPassed`).textContent = data.totalPassChild;
-      document.getElementById(`${platform}ScenariosFailed`).textContent = data.totalFailChild;
-      document.getElementById(`${platform}ScenariosSkipped`).textContent = data.totalSkipChild;
-      return data.totalReports;
-    } catch (err) {
-      console.error(`Failed to load ${fileName}`);
-      return 0;
+      return data;
+    } catch (error) {
+      console.error(error);
+      return null;
     }
   }
 
-  async function updateTotalReports() {
-    const allLinks = [...document.querySelectorAll('#reportsCard a')];
-    let totalPass = 0, totalFail = 0;
+  async function populateReportsTable(platform, tableId, jsonFileName) {
+    const data = await fetchReportData(jsonFileName);
+    if (!data || !data.reports) return;
 
-    for (const link of allLinks) {
-      if (link.href.endsWith('.html')) {
-        const { pass, fail } = await fetchPassFailFromReport(link.href);
-        totalPass += pass;
-        totalFail += fail;
-      }
-    }
+    const tableBody = document.getElementById(tableId);
+    tableBody.innerHTML = ""; // Clear existing rows
 
-    const iosTotalReports = await loadPlatformSummary("ios", "iOSReportSummary.json");
-    const androidTotalReports = await loadPlatformSummary("android", "AndroidReportSummary.json");
-    const totalReportsCount = iosTotalReports + androidTotalReports;
+    data.reports.forEach(report => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td><a href="${report.url}" target="_blank">${report.name}</a></td>
+        <td>${report.totalPassChild}</td>
+        <td>${report.totalFailChild}</td>
+        <td>${report.totalSkipChild}</td>
+      `;
+      tableBody.appendChild(row);
+    });
+  }
 
-    document.getElementById('reportCount').textContent = totalReportsCount;
-    document.getElementById('passFailSummary').innerHTML = ``;
+  async function loadReports() {
+    await populateReportsTable("iOS", "iosReportsTable", "iOSReportSummary.json");
+    await populateReportsTable("Android", "androidReportsTable", "AndroidReportSummary.json");
   }
 
   function showTab(tabId, button) {
@@ -308,24 +177,12 @@
     document.querySelectorAll('.sidebar button').forEach(btn => btn.classList.remove('active'));
     document.getElementById(tabId).classList.add('active');
     button.classList.add('active');
-    document.getElementById('backToTop').style.display = (tabId === 'reports') ? 'block' : 'none';
-    if (tabId === 'home') updateTotalReports();
+    if (tabId === "reports") loadReports();
   }
 
-  function scrollToTop() {
-    document.getElementById('reportsCard').scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  function showReports(platform) {
-    showTab('reports', document.querySelector('[onclick="showTab(\'reports\', this)"]'));
-    const reportLinks = document.querySelectorAll('#reportsCard a');
-    reportLinks.forEach(link => {
-      const os = link.href.includes('iOS') ? 'ios' : 'android';
-      const reportSection = link.closest('.report-section');
-      if (reportSection) {
-        reportSection.style.display = os === platform ? 'block' : 'none';
-      }
-    });
-  }
-
-  document
+  document.addEventListener("DOMContentLoaded", () => {
+    loadReports();
+  });
+</script>
+</body>
+</html>

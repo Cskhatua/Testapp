@@ -6,12 +6,16 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "devDependencies": {
     "@playwright/test": "^1.51.1",
     "@types/node": "^22.14.0"
   },
   "dependencies": {
+    "axios": "^1.9.0",
     "cheerio": "^1.0.0"
-  }
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "description": ""
 }
