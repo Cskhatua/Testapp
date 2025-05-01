@@ -3,6 +3,45 @@ const path = require('path');
 
 const platforms = ['Android', 'iOS'];
 
+// Helper to convert "01.18.2025 14:11:54" → "2025-01-18T14:11:54"
+function toIsoTime(dateStr) {
+  const match = dateStr.match(/(\d{2})\.(\d{2})\.(\d{4}) (\d{2}):(\d{2}):(\d{2})/);
+  if (!match) return null;
+
+  const [, month, day, year, hour, minute, second] = match;
+  return `${year}-${month}-${day}T${hour}:${minute}:${second}`;
+}
+
+// Convert to Unix timestamp (ms)
+function toUnixTimestamp(dateStr) {
+  const match = dateStr.match(/(\d{2})\.(\d{2})\.(\d{4}) (\d{2}):(\d{2}):(\d{2})/);
+  if (!match) return null;
+
+  const [, month, day, year, hour, minute, second] = match.map(Number);
+  const date = new Date(year, month - 1, day, hour, minute, second);
+  return date.getTime();
+}
+
+// Convert "00:05:41:636" → "5m41.636s"
+function toGoDuration(durationStr) {
+  const match = durationStr.match(/(\d{2}):(\d{2}):(\d{2}):(\d{3})/);
+  if (!match) return null;
+
+  const [, hours, minutes, seconds, milliseconds] = match.map(Number);
+  const totalMinutes = hours * 60 + minutes;
+  return `${totalMinutes}m${seconds}.${String(milliseconds).padStart(3, '0')}s`;
+}
+
+// Convert to total milliseconds
+function toMilliseconds(durationStr) {
+  const match = durationStr.match(/(\d{2}):(\d{2}):(\d{2}):(\d{3})/);
+  if (!match) return null;
+
+  const [, hours, minutes, seconds, milliseconds] = match.map(Number);
+  return ((hours * 60 + minutes) * 60 + seconds) * 1000 + milliseconds;
+}
+
+// Main processing
 platforms.forEach(platform => {
   const platformDir = path.join(__dirname, platform);
 
@@ -26,6 +65,7 @@ platforms.forEach(platform => {
   let totalPassChild = 0;
   let totalFailChild = 0;
   let totalSkipChild = 0;
+  let totalDurationMsSum = 0;
 
   let reportSummaries = [];
 
@@ -39,7 +79,7 @@ platforms.forEach(platform => {
 
     const htmlContent = fs.readFileSync(indexPath, 'utf-8');
 
-    // Extract the statusGroup block using RegExp
+    // Extract statusGroup block
     const statusGroupMatch = htmlContent.match(/var\s+statusGroup\s*=\s*{[^}]*}/);
     if (!statusGroupMatch) {
       console.warn(`⚠️  statusGroup block not found in ${folder}`);
@@ -58,21 +98,30 @@ platforms.forEach(platform => {
       return;
     }
 
-    // Extract start, end time and total duration
-    const timeMatch = htmlContent.match(
-      /<span class='badge badge-success'>(.*?)<\/span>\s*<span class='badge badge-danger'>(.*?)<\/span>\s*<span class='badge badge-default'>(.*?)<\/span>/
+    // Extract start, end, and duration
+    const startEndDurationMatch = htmlContent.match(
+      /<span class='badge badge-success'>(.*?)<\/span>[\s\S]*?<span class='badge badge-danger'>(.*?)<\/span>[\s\S]*?<span class='badge badge-default'>(.*?)<\/span>/i
     );
 
-    let started = null;
-    let ended = null;
-    let totalDuration = null;
+    let startedIso = null;
+    let startedUnix = null;
+    let endedIso = null;
+    let endedUnix = null;
+    let durationGo = null;
+    let durationMs = null;
 
-    if (timeMatch) {
-      started = timeMatch[1].trim();
-      ended = timeMatch[2].trim();
-      totalDuration = timeMatch[3].trim();
+    if (startEndDurationMatch) {
+      const [ , rawStart, rawEnd, rawDuration ] = startEndDurationMatch.map(str => str.trim());
+
+      startedIso = toIsoTime(rawStart);
+      startedUnix = toUnixTimestamp(rawStart);
+      endedIso = toIsoTime(rawEnd);
+      endedUnix = toUnixTimestamp(rawEnd);
+      durationGo = toGoDuration(rawDuration);
+      durationMs = toMilliseconds(rawDuration);
+      totalDurationMsSum += durationMs || 0;
     } else {
-      console.warn(`⚠️  Time badges not found in ${folder}`);
+      console.warn(`⚠️  Start/end/duration not found in ${folder}`);
     }
 
     const featuresPassed = statusGroup.passParent || 0;
@@ -89,9 +138,12 @@ platforms.forEach(platform => {
 
     reportSummaries.push({
       reportFolder: folder,
-      started,
-      ended,
-      totalDuration,
+      startedIso,
+      startedUnix,
+      endedIso,
+      endedUnix,
+      totalDurationGo: durationGo,
+      totalDurationMs: durationMs,
       featuresPassed,
       featuresFailed,
       passChild,
@@ -108,6 +160,8 @@ platforms.forEach(platform => {
     totalPassChild,
     totalFailChild,
     totalSkipChild,
+    totalDurationMs: totalDurationMsSum,
+    totalDurationGo: toGoDurationFromMs(totalDurationMsSum),
     reports: reportSummaries
   };
 
@@ -115,3 +169,15 @@ platforms.forEach(platform => {
   fs.writeFileSync(outputFile, JSON.stringify(outputData, null, 2), 'utf-8');
   console.log(`✅ Extracted data and saved to: ${outputFile}`);
 });
+
+// Helper to convert milliseconds to Go duration
+function toGoDurationFromMs(ms) {
+  if (!ms || isNaN(ms)) return null;
+
+  const totalSeconds = Math.floor(ms / 1000);
+  const milliseconds = ms % 1000;
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+
+  return `${minutes}m${seconds}.${String(milliseconds).padStart(3, '0')}s`;
+}
