@@ -46,10 +46,9 @@ platforms.forEach(platform => {
       return;
     }
 
-    // Safely evaluate the statusGroup block (using Function constructor to avoid eval)
     const statusGroupBlock = statusGroupMatch[0]
-      .replace(/^var\s+statusGroup\s*=\s*/, '') // Remove var declaration
-      .replace(/;$/, ''); // Remove trailing semicolon
+      .replace(/^var\s+statusGroup\s*=\s*/, '')
+      .replace(/;$/, '');
 
     let statusGroup;
     try {
@@ -57,6 +56,23 @@ platforms.forEach(platform => {
     } catch (error) {
       console.error(`❌ Error parsing statusGroup in ${folder}:`, error);
       return;
+    }
+
+    // Extract start, end time and total duration
+    const timeMatch = htmlContent.match(
+      /<span class='badge badge-success'>(.*?)<\/span>\s*<span class='badge badge-danger'>(.*?)<\/span>\s*<span class='badge badge-default'>(.*?)<\/span>/
+    );
+
+    let started = null;
+    let ended = null;
+    let totalDuration = null;
+
+    if (timeMatch) {
+      started = timeMatch[1].trim();
+      ended = timeMatch[2].trim();
+      totalDuration = timeMatch[3].trim();
+    } else {
+      console.warn(`⚠️  Time badges not found in ${folder}`);
     }
 
     const featuresPassed = statusGroup.passParent || 0;
@@ -73,6 +89,9 @@ platforms.forEach(platform => {
 
     reportSummaries.push({
       reportFolder: folder,
+      started,
+      ended,
+      totalDuration,
       featuresPassed,
       featuresFailed,
       passChild,

@@ -9,6 +9,9 @@
   "reports": [
     {
       "reportFolder": "Report_10052025",
+      "started": "03.31.2025 14:34:35",
+      "ended": "03.31.2025 14:45:06",
+      "totalDuration": "00:10:31:366",
       "featuresPassed": 0,
       "featuresFailed": 1,
       "passChild": 11,
@@ -17,6 +20,9 @@
     },
     {
       "reportFolder": "Report_12042025",
+      "started": "01.18.2025 14:11:54",
+      "ended": "01.18.2025 14:17:35",
+      "totalDuration": "00:05:41:636",
       "featuresPassed": 1,
       "featuresFailed": 0,
       "passChild": 3,
@@ -25,6 +31,9 @@
     },
     {
       "reportFolder": "Report_17012025",
+      "started": "01.17.2025 10:52:51",
+      "ended": "01.17.2025 11:02:53",
+      "totalDuration": "00:10:02:368",
       "featuresPassed": 1,
       "featuresFailed": 0,
       "passChild": 14,
