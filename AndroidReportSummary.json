@@ -1,12 +1,20 @@
 {
   "platform": "Android",
-  "totalReports": 2,
+  "totalReports": 3,
   "totalFeaturesPassed": 2,
-  "totalFeaturesFailed": 0,
-  "totalPassChild": 17,
-  "totalFailChild": 0,
+  "totalFeaturesFailed": 1,
+  "totalPassChild": 28,
+  "totalFailChild": 1,
   "totalSkipChild": 0,
   "reports": [
+    {
+      "reportFolder": "Report_10052025",
+      "featuresPassed": 0,
+      "featuresFailed": 1,
+      "passChild": 11,
+      "failChild": 1,
+      "skipChild": 0
+    },
     {
       "reportFolder": "Report_12042025",
       "featuresPassed": 1,
