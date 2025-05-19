@@ -126,6 +126,6 @@ platforms.forEach(platform => {
 });
 
 // Save flattened JSON
-fs.writeFileSync('ReportJSON.json', JSON.stringify(flattenedReports, null, 2), 'utf-8');
-console.log('✅ Flattened report saved to: ReportJSON.json');
+fs.writeFileSync('allReport.json', JSON.stringify(flattenedReports, null, 2), 'utf-8');
+console.log('✅ Flattened report saved to: allReport.json');
 
